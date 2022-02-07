@@ -1,0 +1,1681 @@
+thao tác vscode:
+    + ctrl + X : xóa dòng
+    + ctrl + Enter: chèn dòng dưới
+    + ctrl + shift + enter: chèn dòng lên
+    + ctrl + G + số dòng: đi đến dòng
+    + ctr + shift + N(W): mở đóng cửa sổ mới
+    + ctrl + / : chuyển bình luận
+    + alt + lên(xuống): di chuyển dòng lên xuống
+    + alt + click: tạo nhiều click
+    + alt + shift + lên(xuống): tạo click lên ( xuống)
+    + ctrl + lên(xuống): di chuyển lên( xuống)
+    + ctrl + F: tìm
+    + ctrl + H: thay đổi
+
+bài 3:
++ selector: chọn element
+    + chọn theo thẻ:
+    + chọn theo id( indetifier)
+        + dùng dấu #
+        + id chỉ có 1
+    + chọn theo class
+        + dùng dấu .
+        + class có nhiều
+    + chọn thành phần nằm trong: dùng dấu cách
+        + vd: div p{} / chọn tất cả thẻ p trong div
+    + chọn thành phần trực tiếp: >
+    + chọn theo nhiều điều kiện: viết các điểu kiện liền nhau
+    + chọn nhiều element: dùng dấu phảy
+    + chọn theo thứ tự:
+        + first-child: thành phần đầu tiên
+        + last-child: thành phần cuối cùng
+        + nth-child(n): n số  tự nhiêu
+            + n = even: cố chẵn
+            + n = odd: số lẻ
+    + chọn theo thuộc tính: [thuoctinh = "giatri"]
+    + chọn thành phần tiếp theo: dùng dấu + selector
+    + chọn các thành phần tiếp theo: + *
+    + :not()
+Bài 4: các thuộc tính ảnh hưởng đến khích thước element và block inline
+    + các thuộc tính ảnh hưởng đến element:
+        + width
+        + height
+        + box-sizing
+        + padding
+        + border
+    + tất cả các thẻ đều chia làm 2 loại : block va inline
+
+    + thuộc tính display:
+        + block
+        + inline
+        + inline - block
+        + none
+
+Bài 7: Flex
+
++ display: flex; cho thành phần cha
++ flex-grow: định nghĩa việc lớn lên của flex-item
+    + là tỉ lệ phân chia phần thừa còn lại của cha
+    + theo trục main
++ flex-shrink:
+    + ngược lại với flex-grow
+    + là tỉ lệ co lại phân chia phần thiếu 
+    + theo trục main
++ justify-content: sắp xếp các item theo trục main
+    + flex-start; mặc định
+    + flex-end;
+    + center;
+    + space-between; phân chia khoảng cách giữa các item
+    + space-around; phân chia giữa và 2 bên
++ align-item: sắp xếp các item theo trục cross
+        + flex-start; mặc định
+        + flex-end;
+        + center; nằm giữa
+    
++ flex-direction: 
+    + row;; mặc định
+    + row-reverse; đảo chiều1   
+
+    + column: 
+    + column-reverse; đảo chiều
+
++ flex-basis:
+    + là kích thước item theo trục main
+    + flex-direction: row; width
+    + flex-direction: column; height
++ flex-wrap: xuống dòng
+////////////////////
+BÀI 8: font
+
++ font:
+    + hiển thị font chữ
+    + font chữ là một bộ hình anh các chữ cái
+    + khi gõ chũ trên máy tính xếp thành các hình ảnh kể nhau
+    + windows: c:/windown/fonts
+    + linux: /usr/share/fonts
+    + đuôi file font: ttf, eof...
+    + font-size:
+    + line: dòng chữ xếp sát nhau
+    + line-height: độ cao của dòng chữ, các chữ cái đươc căn vào giữa dòng 
+    theo chiều dọc
+    + tạo các menu: thẻ a để : height = line-height thì text sẽ căn giữa
+    + letter-spacing: khoảng cách giữa các chữ cái
+    + word-spacing: khoảng cách giữa các từ
+    + font-family: định nghĩa các loại font
+    + @font-face: định nghĩa ra 1 font
+    + có 2 loại font:
+        + font có sẵn trên máy người dùng
+            + không phải tải về
+            + tốc độ nhanh
+            + nhược điểm: chưa chắc trên máy người dung đã có
+        + web font: 
+            + là những font nhúng ở web, khi người dùng xme web thì font 
+            sẽ được tải về
+            + ưu điểm: hiển thị được tất cả các font, không yêu cầu người dùng có font đó
+            + nhược điểm tốn thời gian tải font
+    + icon-font:
+
+///////
+BÀI 9 POSITION AND BACKGROUND
+
++ position:
+    + là thuộc tính chỉ định vị trí của 1 element
+    + fixed: nằm chính xác tuyệt đối với body
+        + phải đặt vị trí top và left,  right, bottom 
+        + nằm lên phía trên của cac element khác
+        + chiều rộng của element phụ thuộc vào nội dung bên trong
+    + sticky: nằm bình thường, nếu như scroll => không thể cuộn được
+        + phải đặt top: 0;
+    + mặc định: static
+    + relative 
+    + absolute:
+        + vị trí tuyệt đối với thành phần cha có position: relative;
+
++ background:
+    + background-color: màu nền
+    + background-image: url();hình nền
+    + background-repeat: lặp lại
+        + no-repeat
+        + repeat
+        + repeat-x
+        + repeat-y
+    + background-position: 20px 30px;
+        + vị trí của hình nền
+        + px px;
+        + top left right center bottom;
+    + background-size: kích thước ảnh
+        + cover: zoom ra sao cho full cả 2 chiều
+        + contain: zoom ra sao cho full 1 chiều của element thì dừng
+        + auto: mạc định
+        + px px;
+    + background-attackment: 
+        + fixed
+        + scroll
+        + local: scroll theo element hiện tại
+    + overflow: scroll;
+    + viết tắt:
+        background:
+        + màu
+        + ảnh nền
+        + repeat
+        + position
+
+Bài 10: state: tạo menu
+    
+các trạng thái elemet    
+    + hover: khi người dùng di chuột lên element
+    + active: khi nhẫn chuột vào
+    + visited: link bạn đã xem(có trong thẻ a)
+    + link: trạng thái ban đầu(có trong thẻ a)
+    + focus: element hiện tại
+
+pseudo-element:
+    + cũng là element như các thẻ khác
+    + do css thêm vào
+có 2 pseudo element:
+    + before
+    + after
+
+BÀI 11: chữa bài
+
++ text-aline: ảnh hưởng dến cả các thành phần con bên trong
++ text-decoration:
++ text-indent: ?px; căn lề
++ overflow: nội dung bên trong bị tràn
++ color: màu chữ
++ list-style
++ border-collapse: đặt khi tạo bảng
++ border-radius:
++ shadow
+    + box-shadow
+    + text-shadow
++ filter: chỉnh ảnh thẻ img
+
+BÀI 12: style checkbox, button. Media-query
+
+Media query:
+- css selector theo thiết bị
+- thiết kế web responsive
+- Break point ( điểm phá vỡ)
+
+    + màn hình rất lớn > 1200px 
+    + màn hình thường: 960px
+    + màn hình mobile: 768px
+    + màn hình rất nhỏ < 500px  
+
+@media all and (){}
+- có 2 cách viết:
+    + tăng dần: mobile first; max-width;
+    + giảm dần: desktop
+
+bài tập: 
+- làm lại switch
+- làm lại tab
+- 
+
+BÀI 13: IMG
+Các loại hình ảnh trên web
+    + bmp: file bitmap
+        + ảnh là một loạt các pixcel xếp hàng 
+        + thể hiện các ảnh ít bit màu hơn
+        + tăng, giảm bit màu thì giảm dung lượng
+        + it phổ biến
+    + jpg: ảnh nền
+        + giống bitmap, có hệ số nền cao
+        + thích hợp với các ảnh phong cảnh, ảnh chụp
+        + không hỗ trợ trong suốt
+    + png: ảnh portable
+        + hệ số nền cao: có các vùng màu đồng điều
+        + hỗ trợ trong suốt
+    + gif:
+        + bitmap: thể hiện ảnh ít bit màu hơn
+        + hỗ trợ trong suốt
+        + hỗ trợ animation
+    + webp
+        + chuẩn ảnh google : ít dùng
+    + svg:
+        + ảnh vecctor
+        + dùng làm icon
+        + dung lượng nhỏ 
+        + hỗ trợ trong suốt
+        + không chắc 100% trình duyệt hỗ trợ
+
+BÀI 14: PSD TO HTML
+
+thanh công cú
+    + move tool: công cụ di chuyển
+    + select tool: đo nhanh
+    + crop tool: cắt 1 vùng ảnh
+    + pen tool: vẽ
+    + text tool: chữ
+    + hand tool: giữ phím cách
+    + zoom tool
+    + color pallete
+        + force color
+        + background
+    + bảng layer
+        + layer
+            + các lớp xếp chồng nhau
+            + group: chứa các layer
+    + 
+RESPONSIVE
++ Media query
++ Break point
+////////////////
+BOOTSTRAP
++ là css framework
++ bộ khung css để làm css nhanh hơn
++ grid system: ( hệ thống lưới)
+
+container => row => column
+
+container:
+    + container
+    + container-fluid: rộng full màn hình
+
+offset-*: đẩy sang 
+col-*: chiếm số col 
+    viết trong div.row 
+        row-cols-* : định nghĩa số cột để xuống dòng, ĐN trên row
+        align-item-between
+        align-item-end, start, center
+        justify-content-between
+        justifu-content-around
+col-{size}
+
+Bootstrap chia thành các màn hình:
+    + extra large: xl
+    + large: lg 
+    + medium: md 
+    + small: sm 
+    + extra small: xs 
+//////////////////////
+
+Bắt đầu loạt javascript
+- chạy trên trình duyệt
+    + js
+    + es6
+
+- console.log('');
+- js hoạt động như nào?
+    + js engin
+    + đối tượng window: tất cả mọi code js đều nằm trong đối tượng window 
+        console.log(window);
+    + đối tượng document:
+        + nằm  trong window
+        + là đối tượng đại diện cho tài liệu html 
+    + biến
+        + là một vùng bộ nhớ để lưu trữ dữ liệu, biến có tên
+        + khai báo biến:
+            + var ten_bien = gia_tri_bien;
+            + let (es6) 
+        + các kiểu của biến
+            + string
+            + number
+            + array
+                + là mảng chứa nhiều giá trị
+                + mỗi giá trị là một item
+                + thường: các phần tử trong mảng có cùng kiểu giữ liệu
+                + mảng đặc biệt:
+                    + mảng không có phần tử
+                    + mảng có các phần tử là một mảng ( một mảng các mảng)
+                    + mảng 2 chiều
+                    + mảng 3 chiều,,,
+                + object: đối tượng, là thể hiện của cái gì đó trong thực tế 
+                    + sử dụng dấu {}
+                    + có các thuộc tính 
+                + undefined: là biến chưa được tạo ra
+                + null: đã khai báo nhưng chưa có giá trị 
+                + NaN : not a number ( xử lí tính toán)
+                + Boolean: là biến có hai giá trị 1/0
+            + hằng ( hằng số)
+                + là một vùng bộ nhớ có tên, không thể thay đổi trong suốt chương trình 
+
+        + cách chạy cửa js 
+            + chạy trên trình duyệt
+            + chạy trên nodejs 
+
+các thao tác trên js
+    + string
+        + .length;
+        + toUpperCase();
+        + toLowerCase();
+        + subString(start, end); cắt một đoạn chuỗi
+        + slice(start, end);
+        + substr(start, length); cắt từ vị trí và chiều dài
+        + replace(chuoi_can_thay, chuoi_thay); thay thế 
+        + trim() ; cắt khoảng trống hai bên 
+        + indexOf(thứ_cần_tìm); tìm vị trí đầu tiên 
+        + lastIndexOf(thu can tim); tìm vị trí cuối cùng 
+        + charAt(n); ký tự thứ mấy 
+        + split(ky_tu_cat); tách chuỗi theo kí tự nào đó
+            trả về một mảng 
+    
+    + number 
+        + toán tử toán học: + - * / %
+        + logic
+            &&
+            ||
+            !=
+        + bit wise 
+    
+    + function 
+        + hàm là đoạn code thực hiện một công việc nào đó 
+        + hàm có thể gọi nhiều lần 
+        + hàm có thể nhận các tham số (biến đầu vào)
+        + đầu ra: return
+            + khi chương trình gặp return => dừng chương trình 
+        + tham số mặc định, không phải trình duyệt nào cũng hỗ trợ
+        + hàm không tên( anonymous function)
+        + hàm mũi tên (arrow function)
+            nếu chỉ có một tham số thì không cần () 
+            không hỗ trợ các trình duyệt cũ 
+        + tham số là hàm 
+    + array 
+        + lấy ra một phần tử array[i]
+        + lấy ra số phần tử array.length 
+        + pop xóa phần tử cuối cùng 
+            là hàm trả về , trả về phần tử cuối cùng
+        + push thêm phần tử vào cuối
+            trả về length 
+        + unshift thêm vào đầu mảng 
+        + shift xóa phần tử đầu mảng 
+            hàm trả về, trả về phần tử đầu 
+        + splice(start, so_luong); xóa 
+            hàm trả về phần tử cắt được
+        + join(' '): gộp các phần tử lại 
+        + sort : sắp xếp 
+        + reverse : đảo ngược
+
+        + forEach(fn); lặp qua các phần tử của mảng 
+            không trả về 
+        + map(fn); 
+            return 
+            sao chép các phần tử mảng và xử lí 
+        + filter() :lọc 
+            sao chép có chọn lọc 
+            nếu hàm trả về true thì lấy
+            còn trả về false thì bỏ 
+        + every() : kiểm tra và trả về true/false 
+            true khi tất cả true 
+            false khi một trong các phần tử false 
+        + reduce(fn(tong, sohientai), start_value) : 
+            return 
++ Loop và DOM 
++ loop : vòng lặp 
+    + continue: bỏ qua phần bên dưới
+    + break: phá vỡ vòng lặp, vòng dặp dừng
+
+    + for
+    + while(i < 10) {
+        console.log(i);
+        i++;
+    }
+    + do {
+        console.log(i);
+        i++;
+    } while(i < 10);
+        do_while thực hiện ít nhất một lần
+
+    forEach() không có break, continue     
+
++ js DOM :
+    + DOM document object model 
+        tất cả các thẻ trong html, css đều là các object
+
++ các phương thức, thuộc tính 
+    + đối tượng document
+        + phương thức ( method, ham, function)
+            + creatElement(ten_tag);
+            + appendChild(); thêm phần tử vào html
+            + getElementById();
+            + getElementsByClass();
+            + getElementsByTagName();
+            + querySelecterAll()
+        + thuộc tính 
+            + style 
+            + innerHTML 
+
++ event 
+    + click: ấn chuột vào rồi nhả ra 
+    + mousedown: ấn chột xuống
+        touchstart
+    + mouseup: nhả chuột ra 
+        touchend 
+    + mouseover: di chuột vào 
+    + mouseout: di chuột ra 
+
++ document 
+    + DOMContentLoaded: khi tải xong html
+    + load : khi tải xong hết 
+
++ addEvenListener(event, fn_callback)
+
+28 - LẬP TRÌNH HƯỚNG ĐỐI TƯỢNG 
+ cực kì quan trọng 
+
+code xuay quanh các đối tượng
++ đối tượng: object là đoạn code thể hiện bất kì một thực thể, 
+con vật nào đó...trong cuộc sống 
+
++ class
+    + bên trong có
+        + hàm : function,gọi phổ biến là  method( bến trong class )
+        + biến: property: thuộc tính
+        + constructor: hàm khởi tạo 
+            + là một hàm luôn chạy trước các hàm khác
+            + các tham số của constructor được nhận từ khi
+            khởi tạo 
+            + chạy các hàm khởi tạo
+            + là nơi chứa các property 
++ instance: thực thể, là một thể hiện của class
+    + tạo instance bằng từ khóa new
+    + một class có thể tạo nhiều instance 
++ cách gọi hàm của class dùng dấu chấm
++ cách lấy thuộc tính: dùng dấu chấm 
+
+Tạo đối tượng:
+    + bằng từ khóa new
+    + cặp đấu {}(object)
+    + function 
++ this: chính là object hiện tại
+    chỉ được viết trong đối tượng 
+
+Kế thừa 
+    + extends 
+
+    + super(); gọi constructor của cha 
+riêng trong js:
+    + prototype
+    + chứa các hàm có sẵn của js
+    + giấu các hàm này để tránh bị thay đổi và đặt trùng tên 
+
+VD 
+BVN: tạo một class tab 
+     tạo một class modal theo hướng đối tượng 
+
+29 + 30 CALLBACK , PROMISE
++ xử lí bất đồng bộ:
+
++ đồng bộ:
+    + code chạy từ trên xuống
++ bất đồng bộ
+
+Callback:
+Callback hell:
+=> Promise: lời hứa
+     là một object có sẵn trong js
+     chuyên để xử lí bất đồng bộ
+     có hai tham số constructor: resolve va reject
+     then(function(){
+
+     })
+CallStack
+
+Promise.all():
+    + nhận vào một mảng Promise
+    + thành công khi tất cả thành công 
+    + không đảm bảo thứ tự
+    + trả về một promise (return )
+Promise.any():
+    + nhận vào một mảng promise 
+    + thành công khi có ít nhất một promise thành công 
+
+//load theo thứ tự 
+async và await 
+
+BÀI 31: 
+
+BÀI 31: Nodejs => npm 
+
++ viết code js, css
++ nhúng file js vào html
+
++ nhiều file js => compile code js => file bundle => file dịch
++ bước vào hệ sinh thái của js 
+
++ có nhiều thư viện 
++ cài đặt update các thư viện => khó khăn
+
+Có những thư viện js có thể sử dụng cả trên server và client 
+ 
+ NPM  : node package manager ( trình quản lí các gói nodejs )
++ phần mềm:
+    + viết bằng js 
+    + dùng để quản lí các gói ( package , thư viện ) js 
+
++ sử dụng comement line ( như môn HĐH linux )
+    + cd: di chuyển thư mục 
+    + ls: 
+    + ll 
+    + echo 'adf' > a.txt tạo file vs nội dung 
+        echo "abs" >> a.txt thêm 
+    + gedit a.txt mở file a.txt 
+    + nano a.txt 
+        ctr o lưu 
+        ctr x thoát 
+    + cat a.txt xem file 
+
+Cài nodejs => npm 
+Cài npm 
+sử dụng npm:
+    + xem phiên bản: npm -v 
+    + khởi tạo dự án: npm init 
+    + cài đặt một gói: npm install ten_goi
+        + --save: lưu vào dependencies // phiên bản mới không cần cũng được 
+        + --save-dev: lưu vào dev dependencies 
+
+        + cài đặt local: chỉ sử dụng trong thư mục dự án 
+            + tạo dự án mới phải cài lại 
+        + cài đặt global : sử dụng được mọi nơi trên máy 
+            + thêm -g
+    + xóa một gói 
+        npm remove ten_goi
+    + scripts:  
+        + là lệnh để chạy sẵn 
+        npm run ten_lenh
+    + npm install : đọc danh sách các gói từ package.json => cài đặt 
++ package.json: là file cấu hình dự án
+    + dependencies:
+        + là các gói được sử dụng trên môi trường production 
+    + devDependencies: ( chạy thử. ổn thì chuyển sang dependencies)
+        + là danh sách các gói sử dụng trong môi trường dev 
+
++ kho chứa npm: packagist.org 
+
++ package-lock.json : cũng là file cấu hình 
+    + nhưng lock version 
+    + nếu xóa đi . npn install thì nó sẽ update phiên bản mới nhất 
+
++ node-modules : là thư mục chứa toàn bộ thư viện vừa install 
+
++ sử dụng các gói như nào
++ build các file js như nào?
++ viết code js theo module 
+
++ Webpack: là một gói  ( để compile)
+    + cài đặt npm i webpack --save
+    npm i --save webpack-cli
++ webpack.config.js : file cấu hình của webpack 
+    + watch ( auto build ) 
+
+tạo 1 folder 
+cd đến folder 
+khởi tạo dự án: npm init
+thêm các thư viện 
+    npm i ten 
+        --save 
+        --save-dev 
+    npm remove ten 
+    npm install 
+npm install webpack 
+npm install webpack-cli 
+tạo folder webpack.config.js 
+copy code vào webpack.config.js
+    đổi tên file js nếu muốn
+copy script build vào file package.json
+npm run build
+tạo folder src/index.js : code js vào file này => build sang file bundol...
+
+cách dùng các thư viện đã install 
+    gõ vào file js trong folder src đã tạo 
+    var lodash = require('lodash');
+    chạy npm run build
+thêm lệnh watch vào file package.json 
+    chạy lện npm run watch 1 lần.
+    những lần sau ctrl s là file js tự chạy ko phải npm run nhiều
+
+    thêm mode
+        + production chạy trên server
+        + development chạy trên dev < thêm vào watch trong js --mode development>
+
+bài 32: import và export
+
+hai cái gần giống nhau 
+
+import 
+    + quét luên 
+    + không viết ./
+        ./ là thư mục hiện tại chứa thư mục đang viết
+        không viết thì mặc định load trong node_modules
+
+export:
+    + export ra một object => import { ten của property}
+    + import { property as ten_khac}: thay đổi tên 
+    + import * as ten_khac : nhận tất cả 
+    + export default:
+        + export chỉ một cái  
+
+require: 
+    + sao chép code từ file khác sang 
+    + import của es6 -> compile -> require 
+
+BÀI 32 + 33: VUE JS 
+
++ Framework javascript 
+
+Vue :
+    + 2 cách cài 
+        + nhúng 1 file js
+        + dùng cli +
+
++ đối tượng Vue ( options)
+    + el: element: trong một ứng dụng Vue có một element gốc -> root element 
+    // el: '#div',
++ xuất một dữ liệu lên html : {{  }}
+    // div.innerHTML = 'lsjfg'; 
++ data : 
+    + là các thuộc tính( property)  của đối tượng Vue 
+    + dâta đuợc hiển thị lên html bằng: {{  }}
++ model:
+    + là một cách thức liên kết giữa html và js 
++ v-show:
+    + element sẽ hiển thị khi giá trịn là true
+
+
++ 2 ways binding
+    + khi trên html thay đổi => dưới js thay đổi 
+    + và ngược lại js change -> html thay đổi
+
+Vue-cli
+    cài đặt
+    + tạo project: 
+        cd đến folder
+        vue create ten_du_an
+    + babel: công cụ build js => giống webpack
+    + eslint: công cụ sửa lỗi js 
+
+trong file package.json
+    + serve: tạo ra server + watch 
+
++ file.vue
+    + 3 phần 
+        +  hiển thị html
+        + css
+        + js
+    + khi file được build 
+        + nhặt ra 
+    + trong file vue:
+        + data must be a fn 
++ binding
+    + là việc thay đổi html dựa theo dâta 
+    + v-bind
+        + đưa dữ liệu từ dưới lên thành thuộc tính của thẻ 
+        v-bind:ten_thuoc_tinh = data 
+        :ten_thuoc_tinh = data 
+    + v-model: 
+        + cách liên kết một form elemetn với data 
+    + v-show: chỉ định một ellement có hiển thị hay không 
+    + v-if: 
+    + thay đổi nội dung thẻ html
+        v-html='dâta'
+Event: 2 cách 
+    + v-on:event 
+    + @event 
+
+vòng lặp
+    + v-for 
+    + key v-bind:key
+        :key
+
+BT: tạo một trang làm bài trắc nhiệm
+    dữ liệu được viết trước trong đa ta 
+        hiển thị một câu hỏi
+        chọn đáp án
+        next câu tiêp 
+        back quay lại câu trước 
+        khi hết : bao nhiêu đáp án đúng 
+34- ko co j 
+35: VUE component- lifecycle 
+
++ componet: 
+    + là tập hợp các thẻ html
+    + gồm 3 thành phần 
+        + hiển thị
+        + xử lí 
+        + style 
+            + scoped : viết css không ảnh hưởng tới các component
+    + tạo component
+    + vong đời của component
+
++ lifecycle 
++ methos
++ watch: 
+    + khi data thay đổi thì sẽ làm gì 
+    + có hai giá trị 
+        + newValue
+        + oldValue 
+
+BT tạo todoList
+    tạo left-ringt
+
+36
+    tham chiếu và tham trị 
++ props: 
+    + lấy giá trị bên ngaoif vào
+    + prop: chỉ có thể thay đổi giá trị bên trong 
+    + giống data 
+    + prop: chỉ có thể chuyền một chiều 
+    + khai báo prop
+        + dùng một mảng tên props: ['', '', '']
+    
++ filters:
+    + là hàm đứng giữa thành phần xử lí và hiển thị 
+    + filters không làm dữ liệu bị thay đổi
+    mà chỉ thay đổi cách hiển thị 
+    + tham số của filters
+        + tham số đầu tiền là model 
+        + tham số tiếp theo viết vào tính là tham số thứ 2 
+BT: tạo trang mua hàng 
+
+37
+Vue router:
+    + sing page app: SPA => google 
+
+38 GIỚI THIỆU  intro React 
+
+
+Bài 38: vue transition
+
+Css: transition
+    + có trong css3
+    + là sự chuyển tiếp giữa hai trạng thái css => mềm mại 
+    + khi không có sự thay đổi thì transition không có tác dụng 
+    + transition: [thuoc tinh] [thoi gian] [timing fn]
+    + chỉ dùng với thuộc tính bằng số 
++ viết trong cặp thẻ <transition name="abc"></>
+    + v-on:afterEnter sau khi enter 
+    + v-on:beforeEnter 
+    +     :beforeLeave
+    +     : afterLeave 
+BT: làm menu mobile: bằng vue transition
+
+Bài 39: Jquery
+
++ cài đặt:
+    + nhúng file js
+    + npm
++ bộ chọn
+    +
++ event
+    + load: ready(), defer vào hai thẻ script thì không cần ready
+        $(document).ready(fn(){console});
+    + click
++ slide
+    + slideUp(thoi_gian, fn(callback){ })
+    + slideDown()
++ addClass: thêm class 
++ removeClass: xóa class
++ toggleClass: them/xoa
++ remove : xoa luôn elemnt 
++ append() them 1 con
++ appendTo(); them vào cái gì 
++ object:
+    + chọn: 1 cái, nhiều cái
++ this
+    + cái hiện tại 
+    $(this)
++ html(): getter, setter 
++ travel
+    + next()
+    + prev()
++ parent() : lấy cha
++ animate({width, height..}, thoi_gian, callback);
+
+
+
+
+
+BÀI 40 BACK-END
+
+PHP 
+    + là một ngôn ngữ phía server 
++ appache, ngĩn, mysql, composer, redis...
+
+Ứng dụng web trên server
+    + web server : là một phần mềm nhận request => conngr 80
+    + PHP : phần mềm chạy code php
+    + Mysql : csdl 
+khi code: 
+    + cài 3 cái trên
+    + cài luôn gói xampp
+    + Docker 
+
+PHP: 
+    + php 5.6 => phổ biến 
+    + php 7 
+trên webserver 
+    + thực mục root: thưc mục gốc của webserver
+    + là nới chứa file 
+    + windows: C:\xampp\htdocs
+    + linux: 
+    + khi code lưu vào root 
+localhost:
+    + là webserver trên máy 
+
+php chạy trên server , cỗ máy tạo ra html 
+PHP: 
+
+    + mỗi file php bắt đầu bằng thẻ mở php <?php
+    + thẻ đóng ?>
+    + xuất ra màn hình : echo "hello word";
+    + dấu nháy đơn và đôi trong php khác nhau 
+        + nháy đôi chậm hơn 
+
++ biến trong php
++ khai báo biến 
+    + $[ten_bien] = 
+    + chuổi :
+        + nháy đơn => khi không có biến bên trong
+        + nháy đổi => khi có biến bên trong , cần thay thế biến 
+        + xuống dòng : 
+            + ký tự xuống dòng
+                \n : new line 
+                \t : tab;
+    + số : 
+        + Integer: số nguyên 
+            + Unsigned integer : số nguyên không âm nhiều gấp đôi
+        + Float: số thực 
+        + Boolean: 
+            True/ false 
+        + Array: 
+            + in mảng
+                + print_r
+                + var_dump 
+            + php 5 array()
+            + php 7: []
+        + Object 
+            + class
+            + extends 
+            + interface
+            + trait 
+            + 3 cấp độ truy cập 
+
++ ký tự BOM 
+    + khi sử dụng php : header -> hay gặp lỗi  : header already sent
+    + lưu file không có kí tự BOM 
++ trình soạn thảo code 
+
++ PHP file chạy php 
+    + windows : php.exe => xamp/bin/php.ext 
+    + sudo ln -s /opt/xampp.bin/php /usr/bin/php 
+    cd đến rồi : php ten.php
+bài tập: 
+    + cài xamp: chạy hello world 
+    + chụp đăng nhóm
+
+BÀI 41: THREAD 
+
++ php thread 
+    + di phỏng vấn : người ta hay hỏi 
+    + php phân thành các luồng 
+    + mỗi request là một luồng 
+    + các request được xử lí riêng biệt , không liên quan đến nhau 
+    + mỗi luồng có 
+        + execute time: thời gian xử lí=> nếu quá thì báo lỗi 
+        + dung lượng bộ nhớ nhất định
+        + phải cấu hình dung lượng hợp lí 
+    + khi code php không lo chết toàn bộ server 
+
++ biến trong php 
+    + biến tự khai báo 
+    + biến môi trường : có sẵn 
+        + $_SERVER
+        + $_GET : LÀ các tham số được lấy từ url
+        + $_POST : là tham số lấy từ form 
+        + $_SESSION
+        + $_COOKIE
+        + $_REQUEST 
+
++ các thao tác xử lí biến 
+    + tham chiếu và tham trị 
+        + tất cả đề là tham trị : assign by values
+        + có thể tự dặt làm tham chiếu : &
+    $name = 'nhat van nguyen';
+    + string 
+        + explode: tách chuỗi (split)
+            $tach = explode(' ', $name)
+        + implode : gộp chuỗi (join)
+            $name = implode('-', $tach)
+        + strlen($): lấy độ dài chuỗi 
+            echo strlen($name)
+        + substr($, start, length): cắt chuỗi 
+            mb_substr($, start, length)
+        + str_replace // thay the
+    + array:
+        $students = ['nhat', 'nhi', 'tam']
+        + mảng có thể đặt key 
+        + count($): đếm số pt trong mảng
+            echo count($students)
+        + array_unique loại bỏ các phần tử giống nhau 
+            + nếu mảng không có key: unique giá trị
+            + nếu mảng có key: unique theo key 
+    + function 
+        + nếu không đặt kiểu , php có thể trả về bất kì kiểu nào 
+    + object
+        + object: trong php bắt buộc phải khởi tạo từ một class
+        + stdClass: là một class trống , không có j 
+            $person = new stdClass();
+
+BÀI 42: biến môi trường 
+
++ 5 biến môi trường : dạng mảng
+    + GET: lấy từ url
+    + POST: lấy từ form 
+    + REQUEST: tổng hợp cả GET VÀ POST
+    + SERVER: không sửa được : => server có gì thì in ra 
+    + SESSION:  lưu trên server : đại diện cho phiên sử dụng của một người dùng
+    + COOKIE : lưu trên trình duyệt
+
+    + session và cookie đều có thời gian sống
+        + tính từ lần truy cập cuối 
++ điểm khác biết giữa $_GET VÀ $_POST
+    + $_GET 
+        + lấy tham số từ url
+        + sử dụng khi dữ liệu ngắn 
+        + User có thể gửi link cho nhau 
+        + sử dụng khi đọc dữ liệu ra
+    + $_POST 
+        + lấy từ form 
+        + dữ liệu nặng: uload file, bài viết dài...
+        + user không thể gửi link cho nhau 
+        + dùng khi thêm, sử dữ liệu
+        + tốc độ chậm: vì ko có giới hạn dữ liệu gửi lên 
+        + Bảo mật ok 
++ khi chuyển trang, mọi thông tin bị quên lãng 
+    + SESSION: giải quết vấn đề này
+    + SESSION: là một biến mà tất cả các trang đều có thể truy cập
+    + để dùng SESSION : bật SESSION lên: 
+        session_start();
+        $_SESSION['name'] = 'value';
+    + có thể dùng ở tất cả các trang cùng tên miền 
+    + cùng một server
+    + SESSION phụ thuộc vào trình duyệt, user 
+    + SESSION hay dùng làm phần đăng nhập
++ SESSION lưu ở đâu ?
+    + lưu trên server dưới dạng text file
++ COOKIE
+    + lưu trên trình duyệt
++ liên hệ giữa COOKIE và SESSION 
+    + COOKIE lưu session ID 
+    + session id
+        + ID: định danh => để phân biệt các session khác
+    + nếu không có COOKIE => session sẽ bị quên 
+    + nếu như ai đó có session id trên cookie => có được session
+
++ khi đặt 1 biến session 
+    + sẽ tạo ra một cookie trên trình duyệt để lưu tên file
+    + sẽ tạo ra một file trên server để lưu trữ 
++ khi đọc biến session
+    + trình duyệt sẽ gửi coockie lên server 
+    + server thấy cookie => có tên file => đọc file
+
+Hack:
+    + nếu ai có đuợc cookie => chiếm được tài khoản 
+
+hack bằng xss:
+    + cookie: chiếm được session ở trên  server
+
+Hàm isset() : kiểm tra một biến đã tồn tại chưa
+Hàm unset() : xóa biến đi 
+header('location: ...') đi đến địa chỉ 
+
+
+BÀI TẬP làm trong giờ : làm trang đăng nhập
+    + form: điểm user, pass
+    + 
+
+Bài về nhà 
+    + làm một trang đăng nhập 
+    + trang thoát với trang tài khoản 
+
+
+BÀI 43:
+
+Session 
++ cấu trúc một dự án php 
+    + include require
+    + include: sao cheo một đoạn code từ file khác sang
+    + require: sao cheo một đoạn code từ file khác sang
+    + sự khác nhau giữa require và include
+        + require : sao chép file bắt buộc : nếu file không tồn tại, chương trình sẽ dừng 
+        + include : sao chép file không bắt buộc 
+    + thường dùng require 
+    + require_once() => giống require => chỉ sao chép một lần 
+    + include_once() => giống include => chỉ sao chép một lần 
+
++ kiểu dữ liệu trong php:
+    + php không bắt buộc khai báo kiểu dữ liệu => kiểu dữ liệu bị thay đổi
+    + kiểm tra kiểu dữ liệu
+        + gettype($): xem kiểu
+        + ép kiểu
+            + có hai cách ép kiểu
+                $age = (int) $_POST['age'];
+                (string)
+            + intval($): ép sang int 
+            + floatval($)
+        + tham số của function
+            + đặt kiểu biến của tham số : php7
+                function cong(int $a, int $b) :int{
+                    return $a + $b;
+                }
++ hằng số trong php: 
+    + constant
+    + const version = 'anc'; php7
+    + define('version', 'anc') ;php5
+
+PHP header()
+    + của web : không phải của php
+
+    + các thuộc tính thường dùng 
+        + content-type:
+            + báo hiệu cho trình duyệt biết server đang trả về nội dùng gì 
+            + text/html charset=UTF-8
+            + image/img 
+            + application/json 
+        + access-control-allow-origin
+            + viết js:
+
+Đăng nhập bằng ajax 
+    bấm đang nhập: => đang đăng nhập
+
+php ajax
+////////////////////////////////////////
+BÀI 44: composer, oop
+
++ Composer 
+    + package manager của php 
+    + composer init
+    + composer.json
+        + file chứa toàn bộ cá gói, thư viện
+        + require
+            + danh sách các gói
+    + cài đặt một gói 
+        + composer require [ten_gói]
+
++ OPP
+    + cách khai báo class 
+        + từ khóa class 
+
+        + construct(){}
+        + destruct()
+        + thuộc tí
+            + property
+    + kế thừa:  extends
+        + gọi construct của class cha
+            + parrent::__construct();
+    + cấp độ truy cập : có 3 cấp độ
+        + public : công khai
+        + protected: được bảo vệ: dùng trong các class cha và con 
+        + private: riêng tư: chỉ sử dụng trong class đó 
+    + thuộc tính : bặt buộc phải có từ khóa chỉ mức độ truy cập
+    + hàm 
+        + mạc định là public 
+
+    + static property và static function 
+        + là thuộc tính hoạc hàm -> có thể lấy mà không cần tạo đối tượng 
+        + không thể sửa đổi
+        + singleton : class dùng một lần 
+    + namespace:
+        + không gian tên 
+
+        + khi có nhiều lập trình viên code với nhau
+        + khi dùng thư viện
+        namespace company\long 
+
+        require('nhat.php');
+        use company\long\comMeo as conMeoCuaLong;
+
+        $tom = new meoCuaLong;
+    + khởi tạo thực thể (instant)
+        + phải viết đầy dủ namespace 
+        + sử dung từ khóa use
+            + giống import
+            + use... as ... => sử dụng class với tên khác
+
+
+///////////////////////////
+
+BÀI 45: OOP tiếp : abstract class 
+
++ overide: ghi đè phương thức 
+    + viết hàm giống hệt trong class con
+
++ abstract class 
+    + được dùng khi thiết kế class
+    + là class cơ sở 
+    + quan trọng 
+    + dược viết bởi dep có exp 
+    + đặt từ khóa abstract trước class 
+    + ở trong một abstract class mới có thể đặt các abstract function 
+    + abstract function là các hàm rỗng 
+    + bắt buộc class con phải có 
+
++ interface: <tính từ> 
+    + được sử dụng rất nhiều 
+    + là những tính năng riêng lẻ, có thể dùng cho nhiều class 
+
+vd code một game vườn thú vui vẻ 
+
++ abstract class và interface -> thiết kế đối tượng 
+
++ trait: 
+    + là tập hợp các hàm 
+    + copy - paste 
+    + dùng từ khóa use 
+        trait chay{};
+        class abc {
+            use chay;
+        }
+    + sử dụng kết hợp với interface 
+Bài Tập :
+    + thiết kế game giao thông vận tải:
+        + có các phương tiện
+        + mỗi phương tiện có trọng tải
+        + có phuơng tiện hàng không có thể bay
+        + phương tiện đường thủy di chuyển tren nước
+        + phương tiện đường bộ, di chuyển trên đường
+    + mỗi phương tiện có 
+        + property: trong tai
+        + functon: xep hang lên phuong tiện
+    + có thể sáng tạo thêm
+        + vận dụng các kiến thức đã học 
+        + show hàng 
+        
+////////////////////////////////////////
+
+them lop 5
+
+- Hien thi danh sach db
+    "show databases";
+- Tao db
+    "create database [ten];"
+- Xoa db
+    "drop database [ten]"
+
+- hien thi table 
+    "show table;"
+- xoa bang
+    "drop table [ten];"
+- xoa du lieu trong bang 
+    "truncate table [ten];"
+- backup: 
+    + export ra file .sql
+        mysqldump -u root -p [ten] > ~/data.sql
+    + import 
+
+
+MAT BE = 1 : truy vấn sql 
+    + select 
+        + SELECT [danh sách côt] FROM [tên bảng] 
+            WHERE [điều kiện]
+                WHERE id = 2 OR id = 3
+                ĐK so sánh : =, >=, >, <, <=
+            LIKE : SELECT * FROM articles where title LIKE '%ok%'
+            WHERE IN : nằm trong bảng 
+                SELECT * FROM articles WHERE id in (1, 3)
+            WHERE NOT IN ()
+            WHERE title NOT NULL 
+        + LIMIT - OFFSET
+    + insert 
+        + INSERT INTO [ten bảng] ([các cột]) VALUES (các giá trị),...;
+        INSERT INTO articles(content, title) 
+        VALUES ('noi dung a', 'tieu de 2'), ...;
+    + delete 
+        DELETE FROM [ten bảng] WHERE ...
+    + update 
+        UPDATE [ten bảng] SET tên_cột1 = [giá trị 1],
+                              tên_cột2 = [giá trị 2]...
+            WHERE....
+        UPDATE articles SET title = 'rat vui',
+                            content = 'haha'
+            WHERE id = 9
+    + select nhiều bảng
+        SELECT * FROM articles, categories WHERE articles.category_id = categories.id;
+
+        + danh sách các cột 
+            AS : SELECT title AS tiêu_đề // đổi tên 
+        + danh sách tên bảng: đôỉ tên 
+            tên_bảng tên_bảng_mới
+            SELECT * FROM articles a, categories b 
+                WHERE a.category_id = b.id  // tên mới là a
+            
+            => SELECT a.id as article_id, title, content, name as tenchuyenmuc, b.id as id_chuyenmuc
+                FROM articles a, categories b 
+                WHERE a.category_id = b.id
+    
+    + join : gộp nhiều bảng lại với điều kiện 
+        + điều kiện gộp: on
+            SELECT * 
+            FROM articles a 
+            JOIN categories b ON a.category_id = b.id
+        + 4 kiều join 
+            left join: ưu tiên bảng bên trái, bảng bên phải không có thì null 
+            right : ưu tiên bảng bên phải 
+            inner: lấy đòng cả 2 bảng có 
+            outer: lấy hết
+
+
+
+
+2: hs - ko co j
+3: ket noi csdl 
+    code php thuần
+    ->query() /tra ve true-false
+4: laravel
+    install
+    MVC
+    route::get, post, put, delete, resource; //gioi thieu
+    artisan 
+        make:model
+        make:controller
+        make:seeder
+        make:command 
+        ...
+5: 
+    request
+    validate
+    extends view
+    include
+    make migration  
+6: 
+    migrate table 
+    add_[ten_cot]_to_[ten_bang]
+    seeder // ko nhan thi composer dump-autoload
+    faker 
+    tao model  //
+    orm //ung voi moi model -> table db
+7:
+    eloquent
+        +  Ham doc data
+            query
+                where
+                limit
+                offset
+                take
+                orderBy 
+
+            truy van
+                trả về obj
+                    find
+                    findOrFail
+                    first
+                    firstOf(fn())
+                    min
+                    max
+                    count()
+                trả về collection
+                    all
+                    paginate 
+                    get
+        + Hàm tạo dữ liệu
+            C1: new obj
+                $article = new Article;
+                $article->save();
+            C2: create
+                $article::create(['title'=>'abc']);
+            C3: insert
+                $article::insert([[],[],...]);//insert được nhiều 
+        + Vừa đọc và ghi
+            + firstOrCreate(['title'=>'abc'//arr tìm kiếm],[arr bổ xung])
+            + firstOrNew()
+                + Neeus nhu đã tồn tại -> đọc
+                + nếu như chưa tồn tại => tạo
+            + updateOrCreate()
+            + updateOrNew()
+        + update
+            C1: đọc ra 1 dòng
+                $article = Article:find(1);
+                $article->title = 'a';
+                $article->save();
+            C2: update
+                $article = Article::whereId(1)->update(['title'=>'abc'])
+        + xoa 
+            C1: đọc ra 1 dong ->delete()
+            C2: Article::destroy(1);
+8: 
+    Thực hành tạo blog post them, sua xoa bài viết
+    relationship
+
+9: 
+    + eager loading, Contrain query
+        $post->category->name;  / tốn thêm 1 lần query
+            select * from posts where id = post_id
+            select * from categories where category_id = post_id;
+    
+        $post = Post::whereId($id)
+                    ->with('category:id,name')
+                    ->with(['tags' => function($query){
+                        return $query->orderBy('created_at')->limit(5);
+                    }])
+                    ->firsOrFail();
+    + model morph (polymorphic relation)
+    + getAtribute
+
+10:
+    + collection : 
+        + giống mảng 
+        + hàm hay dùng 
+            + sort
+            + sortBy
+            + max
+            + unique 
+            + toArray() 
+            ... 
+    + Validation 
+        make:request
+    + Rules: 
+        make:rule
+        + max
+        + require
+        + email 
+        + alpha_dash [a-z, 0-9, _]
+        + in:nam,nua -> bắt buộc nhập nam hoặc nữ 
+        + unique:[table],[colunm]
+        ...
+    + Auth , middleware
+        + Authentication: dang ki/ dang nhap 
+            + laravel/ui -> tạo ra views, js, css
+        
+        + middleware:
+            + tạo middleware 
+                + php artisan make:middleware BlockIpMiddleware 
+            + đăng kí middleware 
+                app/http/kernal.php
+                tạo trong :protected $routeMiddleware 
+        + các tham số của middleware
+            + ->middleware(['blockIp:nhat,20']);
+         handle( $, $next, ...$roles)
+
+11: 
+    + custom dang kí, đăng nhập authentication
+        + đăng kí bằng user name // mặc định là email 
+        + thêm field khác: sđt, adress...
+        + đăng kí bằng mạng xã hội 
+        + sử dụng vuejs authentication
+    + mix version(); trong webpack.min.js
+    + dangw nhap bang google : hướng dẫn https://socialiteproviders.com/Google-Plus/#installation-basic-usage
+        + i gói socialite 
+            composer require laravel/socialite
+        + require gói của gg
+            composer require socialiteproviders/google
+        + thêm đoạn dưới vào file config/services.php
+            'google' => [    
+                'client_id' => env('GOOGLE_CLIENT_ID'),  
+                'client_secret' => env('GOOGLE_CLIENT_SECRET'),  
+                'redirect' => env('GOOGLE_REDIRECT_URI') 
+                ],
+
+            GOOGLE_CLIENT_ID
+            GOOGLE_CLIENT_SECRET
+            GOOGLE_REDIRECT_URI
+        + Add provider event listener vào file app/Providers/EventServiceProvider
+                \SocialiteProviders\Manager\SocialiteWasCalled::class => [
+                // ... other providers
+                'SocialiteProviders\\Google\\GoogleExtendSocialite@handle',
+            ],
+
+12: 
+    + queue : hang doi 
+        + php artisan make:job SendEmailJob 
+            chọn dịch vụ queue trong config/queue
+            chỉnh trong file .env: QUEUE_CONNECTION=database // chọn queue database
+            + php artisan queue:table // lệnh tạo bảng khi dùng queue database 
+            + migrate -> đc 1 bảng job
+                queue: tên 
+                payload: dữ liệu của queue 
+                attempts: số lần thử lại 
+                reserved_at: queue được gọi khi nào?
+                available_at: hết hạn lúc nào?
+        + sử dụng queue trong controller : use App\jobs\SendEmailJob
+            + lưu queue vào bảng jobs 
+                SendEmailJob::dispatch() // gọi static
+
+                chuyển biến vào queue qua dispatch($user);
+            + chạy queue
+                 php artisan queue:work // chạy queue 
+        
+            + dispatch()->delay(now()->addMinutes(5)): // delay 5p 
+            + dispatch()->onQueue('dat_ten_que'); //dat ten cho queue
+                php artisan queue:work --ten_queue / chỉ chạy queue tên...
+            + queue chạy thất bại sẽ vào bảng fail_jobs 
+                + php artisan queue:fail //show queue job err
+                + php artisan queue:retry id, all //id quay lại hàng đợi/ all tất cả
+
+            + php artisan queue:work --queue=... --tries=2 // tries là số lần thử lại
+            + protected $tries = 1; // chỉnh ở file job/ten_queue
+        + dispatch()->onConnection('redis'); // lưu trên ?? redit queue, store
+        + chạy lại queue bị fail
+            + php artisan queue:retry id, all //id quay lại hàng đợi/ all tất cả
+            queue:flush / xóa sạch bảng fail
+        + queue:flush //xóa bảng fail 
+        + queue:forget id // quên queue id là 
+    + commant - schedule
+        + php artican make:command [ten]
+        + vaof file console/command 
+        + viết login trong hàm handle
+    + schedule 
+        trong file console/kernel
+        ->cron('* * * * *') -> mỗi phút 1 lần. trên linux 'crontab -e'
+        ->withoutOverlapping() // đợi chạy xong 
+        $schedule->job(new tenJob)->daily();
+        application hear beat : 
+        echo 'a' > a.txt / ghi đè 
+        echo 'a' >> a.txt /ghi thêm
+
+
+
+            
+
+
+
+
+
+//???????????????????????????????????????????????/
+???????????????????????????????????????
+BAI 56: Route va Request
+Route 
+Request 
+    + tạo request: php artisan make:request ...Request 
+    + use request vào model
+
+fill
+$request->all() // lấy hết 
+$request->only(['name1', 'name2']) // chỉ lấy 
+$request->only('name1')
+$request->query('name','gia tri kkhi null')
+$request->except() // bỏ qua. có thể truyền vào một mảng
+
+validate form
+
+tạo rule : Bad word rule 
+    php artisan make:rule ...Rule
+    public function pases($attribute, $value){
+        if(strpos($value, 'deo') !== false){
+            return false;
+        }
+        return true;
+    }
+    fn message() { return 'viet bay qsua' ;}
+    sử dụng vất vào rules trong request // new ...Rule;
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+BAI 57:
+
+truyền biến từ controller 
+    return view('abc', ['name', 'nhat nguyen'])
+    return view('abc')->with('name', 'nhat nguyen)
+
+blade templates , các vòng lặp 
+
+extends view
+    @yield('')
+    @section('') @endsection
+
+migration
+    php artisan make:migration create_..._table // tao bang 
+    php artisan add_feil_to_..._table // them feil vao bang
+        default(...)
+        nullable()
+        notnull()
+        unsigned() // không âm 
+        unique // các dòng dữ liệu không giống nhau
+
+model 
+    php artisan make:model Models/... -m 
+    mô hình ORM( object relation maping) là mô hình liên kết giữa model và db
+
+...........................................................................
+
+BAI 58 
+
+fillable
+
+@csrf 
+action="{{route('name')}}"
+
+them 
+sua 
+xoa 
+    soft delete : xóa tạm thời
+    withTrashed() : cac dong da xoa 
+    restore() : khoi phuc 
+
+paginate
+    ->links()
+
+.......//////////////////////////////////////////////////
+
+BAI 59 lien ket CSDL 
+
+ham tham so
+where
+
+ham thuc thi 
+    get 
+    find 
+    findOfFail
+    save
+    delete
+    update 
+
+Quan he 
+    1 - n : hasMany() - belongsTo() 
+    1 - 1 : hasOne() - belongsTo()
+    n - n : BelongsToMany() - BelongsToMany() 
+
+mix 
+
+get bootstrap, vue
+
+///......................,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+BAI 60 
+
+WEB rut gon link 
+
+seed
+
+[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
+
+BAI 61
+
+middleware
+    php artisan make:middleware ...
+
+auth
+
+role
+
+BT: tao he thong hoc tap online 
++ trang chu 
++ xem bai giang 
++ nap tien cho con hoc 
++ admin 
+
+Yeu cau 
++ dang ki 
+    + user , password : chon hs hoac phu huynh
++ dang nhap 
+    + neu la hoc sinh => trang xem bai viet 
+    + phu huyenh => trang nap tien 
+    + admin => admin 
++ hs : chi xem dc trang bai giang 
++ phu huynh : xem duoc trang bai giang, nap tien
++ admin: admin, bai giang
+
+////////////?????????????????>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+BAI 62
+
+login with fb 
+
+login with google 
+
+,.>>>>>>>>>>>>""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+BAI 63
+
+login with ajax 
+
+gioi thieu phan quyen : permissions
+
+gates
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+BAI 64 
+
+gates 
+    su dung trong route : can
+    su dung trong controller : authorize
+
+lỗi
+model : policy
+    la tap hợp các gate => gắn với 1 model 
+    make:policy ...
+
+............................///////////////////////////
+
+BAI 65: 
+
+clone topdev 
+ 
+/////////////////////////////...............,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+BAI 71
+
+policy
+    php artisan make:policy ...Policy --mode=...
+
+command 
+    php artisan make:commnd ...Command 
+
+$with
+::with()
+::without()
+load /theo dieu kien 
+
+..............//////////////...//////////////////////////////
+
+BAI 72
+
+Schedule: 
+    + la mot doan code chạy theo lịch 
+    + chạy vào một giờ nhất định  
+
+    + tạo cronjob cho laravel 
+        + mỗi phút 1 lần chạy 
+            Laravel lấy thời gian -> dùng thời gian -> chạy 
+        + Heart beat 
+
+Queue: 
+    la đoạn code chạy theo thứ tự 
+    tác vụ nặng , nâu 
+    không bị block giao diện 
+
+asdffffffffffffffffffffffffffffffffffsssssssssssssssssssssssssssss
+
+BAI 73 Cache 
+
+Cache::remember(name, seconds, fs )

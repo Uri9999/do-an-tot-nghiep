@@ -1,0 +1,65 @@
+.show-cart {
+  width: 100%;
+}
+
+.show-cart > div {
+  display: flex;
+  background-color: white;
+  margin: 12px 10px;
+}
+
+#menu {
+  height: 50px;
+  line-height: 50px;
+}
+
+#menu > * {
+  padding-left: 15px;
+}
+
+img {
+  display: inline-block;
+}
+
+.show-cart > div > div {
+  padding: 0px auto;
+}
+
+#items {
+  border-radius: 1px solid #494949;
+}
+
+#items > div {
+  height: 130px;
+  line-height: 130px;
+}
+
+#img {
+  width: 20%;
+}
+
+#product {
+  width: 25%;
+}
+
+#price {
+  width: 15%;
+}
+
+#amount {
+  width: 15%;
+}
+
+#amount input {
+  display: inline-block;
+  width: 80px;
+}
+
+#total-price {
+  width: 15%;
+}
+
+#delete {
+  width: 10%;
+}
+

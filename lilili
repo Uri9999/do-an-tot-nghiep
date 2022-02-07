@@ -1,0 +1,101 @@
++ Request 
+    + $request->all(); //  trả về mảng các tham số request
+    + $request->only(chuoi hoặc mảng) // lọc request 
+    + $request->except()//loại trừ 
+    + $request->has(chuỗi tên tham số )// đúng trả về true 
+    + $request->input('title') = $_POST['title'] = $request->title;
+
++ Response: 
+    + return view();
+    + return back() // trở về trang cũ 
+    + withInput() // trả về cùng với input: 
+    + with() //thêm biến 
+    + redirect() // chuyển trang 
+        redirect()->route(name);
+        redirect()->away()// chuyển đến địa chỉ web khác
+        redirect()->to() // duong dan
+    + return response()->json() // trả về dạng json 
+
++ fillable 
+    + find($id) // 1 
+    + find(array)
+    + findOrFail($id)
+    + all(); 
+    + paginate(num)
+    + where()
+    + not()
+    + get();
+    + counts()
+    + max()
+    + min() 
+    + limit();
+    + take();
+    + orderBy(field, asc/desc)
+    + whereId(3)->update(array)
+    + updateOrCreate() / tạo hoặc update
+    + updateOrNew() // giong updateOrCreate
+    + firstOrCreate() // tìm, không có thì tạo mới
+    + firstOrNew()
+
+softDelte 
+    + withTrashed()
+    + onlyTrashed
+
+//
+2:13:48
+
+crud
+faker-Seeder
+
+2:15:40
+
+blade templade 
+
+relationship
+    detail -> hien thi article va comments 
+    article - comment : 1 - n
+    category - article : n - n
+
+//
+
+1:36:21
+
+ui boostrap , vue 
+
+validate 
+    ip
+    ipv4
+    ipv6
+    integer
+    alpa_dash : a-z, 0-9 
+    url 
+    required
+    email ...
+    unique:table
+
+//
+
+2:00:33
+
+vue axios 
+show list, them sua xoa = axios
+phan trang tren vuejs
+
+//
+
+1:29:46 
+
+auth sơ qua 
+docker 
+
+//
+
+1:38:07
+
+makefile
+ 
+ ///
+ 
+1:56:14 
+
+git
