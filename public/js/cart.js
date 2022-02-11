@@ -122,7 +122,7 @@ function calculatePrice() {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/nhatit/shop-web/resources/js/cart.js */"./resources/js/cart.js");
+module.exports = __webpack_require__(/*! /home/nhatit/do-an-tot-nghiep/resources/js/cart.js */"./resources/js/cart.js");
 
 
 /***/ })

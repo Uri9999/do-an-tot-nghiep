@@ -51,3 +51,13 @@ img {
 #delete {
     width:10%;
 }
+.preview {
+    margin: 0 auto;
+    align-items: center;
+    .preview-pic {
+        max-width: 300px;
+    }
+    .preview-thumbnail {
+        align-items: center;
+    }
+}

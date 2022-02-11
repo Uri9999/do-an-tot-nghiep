@@ -15,4 +15,8 @@ class AdminController extends Controller
         Auth::logout();
         return redirect()->to('login');
     }
+
+    public function test() {
+        return view('admin-lte.layout');
+    }
 }

@@ -11,6 +11,8 @@
 |
 */
 
+use App\Http\Controllers\AdminController;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -19,8 +21,12 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/admin-manager', 'AdminController@test');
+
+Route::get('/logout', 'HomeController@logout');
+
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], function(){
-    Route::get('/', 'AdminController@index');
+    Route::get('/', 'AdminController@index')->name('dashboard');
     Route::get('/logout', 'AdminController@logout')->name('logout');
 
     Route::group(['prefix' => 'category'], function() {
@@ -43,6 +49,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], func
 
         Route::get('/deleteProd/{id}', 'ProductController@deleteProd')->name('deleteProd');
     });
+
+    // Route::get('/users')
+});
+
+Route::group(['prefix' => 'admin-manager', 'middleware' => ['auth', 'role:admin']], function() {
+    Route::get('/', 'admin/HomeController')->name('home');
 });
 
 

@@ -63,3 +63,16 @@ img {
   width: 10%;
 }
 
+.preview {
+  margin: 0 auto;
+  align-items: center;
+}
+
+.preview .preview-pic {
+  max-width: 300px;
+}
+
+.preview .preview-thumbnail {
+  align-items: center;
+}
+
