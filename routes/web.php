@@ -99,6 +99,7 @@ Route::group(['prefix' => 'admin-manager', 'middleware' => ['auth', 'role:admin'
 
 Route::group(['prefix' => 'home-user'], function() {
     Route::get('/', 'user\HomeController@index')->name('getHomeIndex');
-    Route::get('/data-index', 'user\HomeController@dataIndex')->name('getDataIndex');
-
+    Route::post('/add-cart', 'user\HomeController@addCart')->name('addCart')->middleware(['auth', 'role:user']);
+    Route::get('/cart', 'user\HomeController@getViewCart')->name('getViewCart')->middleware(['auth', 'role:user']);
+    Route::get('/cart/data-cart', 'user\HomeController@getCart')->name('userGetCart')->middleware(['auth', 'role:user']);
 });

@@ -19,6 +19,8 @@ mix.js('resources/js/app.js', 'public/js')
    .sass('resources/sass/frontend-css/contact.scss', 'public/css/frontend-css')
    .sass('resources/sass/app.scss', 'public/css')
    .sass('resources/sass/admin-lte/user.scss', 'public/css/admin-lte')
+   .sass('resources/sass/user/index.scss', 'public/css/user')
    .js('resources/js/cart.js', 'public/js')
    .js('resources/js/user/index.js', 'public/js/user')
+   .js('resources/js/user/cart.js', 'public/js/user')
    .version();

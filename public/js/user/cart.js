@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -857,10 +857,10 @@ try {
 
 /***/ }),
 
-/***/ "./resources/js/user/index.js":
-/*!************************************!*\
-  !*** ./resources/js/user/index.js ***!
-  \************************************/
+/***/ "./resources/js/user/cart.js":
+/*!***********************************!*\
+  !*** ./resources/js/user/cart.js ***!
+  \***********************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -875,22 +875,9 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 document.addEventListener('alpine:init', function () {
-  Alpine.data('userIndex', function () {
+  Alpine.data('cartIndex', function () {
     return {
       items: [],
-      categories: [],
-      products: [],
-      type: 1,
-      takes: [3, 6, 9],
-      keys: ['name', 'price', 'new'],
-      option: {
-        skip: 0,
-        take: 9,
-        key: 'name'
-      },
-      total: null,
-      totalPage: null,
-      currentPage: 1,
       init: function init() {
         var _this = this;
 
@@ -899,10 +886,11 @@ document.addEventListener('alpine:init', function () {
             while (1) {
               switch (_context.prev = _context.next) {
                 case 0:
-                  _context.next = 2;
+                  console.log(window.location.href.split('#')[0]);
+                  _context.next = 3;
                   return _this.getData();
 
-                case 2:
+                case 3:
                 case "end":
                   return _context.stop();
               }
@@ -911,8 +899,6 @@ document.addEventListener('alpine:init', function () {
         }))();
       },
       getData: function getData() {
-        var _this2 = this;
-
         return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
           var res;
           return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
@@ -921,20 +907,15 @@ document.addEventListener('alpine:init', function () {
                 case 0:
                   _context2.next = 2;
                   return axios({
-                    url: window.location.href,
-                    method: 'GET',
-                    params: _this2.option
+                    url: window.location.href.split('#')[0] + '/data-cart',
+                    method: 'GET'
                   });
 
                 case 2:
                   res = _context2.sent;
                   console.log(res.data.data);
-                  _this2.categories = res.data.data.categories;
-                  _this2.products = res.data.data.products;
-                  _this2.total = res.data.data.total;
-                  _this2.totalPage = Math.floor(_this2.total / _this2.option.take);
 
-                case 8:
+                case 4:
                 case "end":
                   return _context2.stop();
               }
@@ -965,7 +946,7 @@ document.addEventListener('alpine:init', function () {
         this.getData();
       },
       addCart: function addCart(productId) {
-        var _this3 = this;
+        var _this2 = this;
 
         return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
           return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
@@ -983,7 +964,7 @@ document.addEventListener('alpine:init', function () {
                       'Content-Type': 'application/json'
                     }
                   }).then(function (response) {
-                    _this3.showSuccess();
+                    _this2.showSuccess();
                   })["catch"](function (error) {
                     window.location.href = location.origin + '/login';
                     console.log(error);
@@ -1013,14 +994,14 @@ document.addEventListener('alpine:init', function () {
 
 /***/ }),
 
-/***/ 2:
-/*!******************************************!*\
-  !*** multi ./resources/js/user/index.js ***!
-  \******************************************/
+/***/ 3:
+/*!*****************************************!*\
+  !*** multi ./resources/js/user/cart.js ***!
+  \*****************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/nhatit/do-an-tot-nghiep/resources/js/user/index.js */"./resources/js/user/index.js");
+module.exports = __webpack_require__(/*! /home/nhatit/do-an-tot-nghiep/resources/js/user/cart.js */"./resources/js/user/cart.js");
 
 
 /***/ })

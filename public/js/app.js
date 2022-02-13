@@ -40885,10 +40885,21 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
+/***/ "./resources/sass/user/index.scss":
+/*!****************************************!*\
+  !*** ./resources/sass/user/index.scss ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ 0:
-/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/sass/frontend-css/style.scss ./resources/sass/frontend-css/search.scss ./resources/sass/frontend-css/style-cart.scss ./resources/sass/frontend-css/style-detail.scss ./resources/sass/frontend-css/contact.scss ./resources/sass/app.scss ./resources/sass/admin-lte/user.scss ***!
-  \******************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/sass/frontend-css/style.scss ./resources/sass/frontend-css/search.scss ./resources/sass/frontend-css/style-cart.scss ./resources/sass/frontend-css/style-detail.scss ./resources/sass/frontend-css/contact.scss ./resources/sass/app.scss ./resources/sass/admin-lte/user.scss ./resources/sass/user/index.scss ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -40899,7 +40910,8 @@ __webpack_require__(/*! /home/nhatit/do-an-tot-nghiep/resources/sass/frontend-cs
 __webpack_require__(/*! /home/nhatit/do-an-tot-nghiep/resources/sass/frontend-css/style-detail.scss */"./resources/sass/frontend-css/style-detail.scss");
 __webpack_require__(/*! /home/nhatit/do-an-tot-nghiep/resources/sass/frontend-css/contact.scss */"./resources/sass/frontend-css/contact.scss");
 __webpack_require__(/*! /home/nhatit/do-an-tot-nghiep/resources/sass/app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! /home/nhatit/do-an-tot-nghiep/resources/sass/admin-lte/user.scss */"./resources/sass/admin-lte/user.scss");
+__webpack_require__(/*! /home/nhatit/do-an-tot-nghiep/resources/sass/admin-lte/user.scss */"./resources/sass/admin-lte/user.scss");
+module.exports = __webpack_require__(/*! /home/nhatit/do-an-tot-nghiep/resources/sass/user/index.scss */"./resources/sass/user/index.scss");
 
 
 /***/ })

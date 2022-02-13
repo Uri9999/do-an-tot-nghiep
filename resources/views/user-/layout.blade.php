@@ -16,6 +16,7 @@
     <link href="{{ url('user/css/font-awesome.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ url('user/css/flexslider.css') }}" type="text/css" media="screen" />
     <link href="{{ url('user/css/style.css') }}" rel="stylesheet">
+    @yield('css')
 </head>
 
 <body>
@@ -181,7 +182,7 @@
                                                         $30.00
                                                     </p>
                                                     <a href="#" class="remove">
-                                                        <img src="images/remove.png" alt="remove">
+                                                        <img src="{{ url('user/images/remove.png') }}" alt="remove">
                                                     </a>
                                                 </div>
                                             </div>
@@ -212,7 +213,7 @@
                                                         $30.00
                                                     </p>
                                                     <a href="#" class="remove">
-                                                        <img src="images/remove.png" alt="remove">
+                                                        <img src="{{ url('user/images/remove.png') }}" alt="remove">
                                                     </a>
                                                 </div>
                                             </div>

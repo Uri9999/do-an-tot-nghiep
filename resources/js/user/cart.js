@@ -1,38 +1,17 @@
 document.addEventListener('alpine:init', () => {
-    Alpine.data('userIndex', () => ({
+    Alpine.data('cartIndex', () => ({
         items: [],
-        categories: [],
-        products: [],
-        type: 1,
-        takes: [3, 6, 9],
-        keys: [
-            'name',
-            'price',
-            'new',
-        ],
-        option: {
-            skip: 0,
-            take: 9,
-            key: 'name',
-        },
-        total: null,
-        totalPage: null,
-        currentPage: 1,
 
         async init() {
+            console.log(window.location.href.split('#')[0]);
             await this.getData();
         },
         async getData() {
             let res = await axios({
-                url: window.location.href,
+                url: window.location.href.split('#')[0] + '/data-cart',
                 method: 'GET',
-                params: this.option,
             })
             console.log(res.data.data);
-            this.categories = res.data.data.categories;
-            this.products = res.data.data.products;
-            this.total = res.data.data.total;
-            this.totalPage = Math.floor(this.total / this.option.take);
         },
 
         updateTake(value) {
