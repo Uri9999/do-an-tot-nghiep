@@ -36,6 +36,7 @@
     <!-- summernote -->
     {{-- <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css"> --}}
     <link rel="stylesheet" href="{{ url('admin-lte/plugins/summernote/summernote-bs4.min.css') }}">
+    @yield('css')
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -329,6 +330,24 @@
                                     <a href="pages/layout/collapsed-sidebar.html" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Collapsed Sidebar</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-copy"></i>
+                                <p>
+                                    User Manager
+                                    <i class="fas fa-angle-left right"></i>
+                                    <span class="badge badge-info right">6</span>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('users') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>List User</p>
                                     </a>
                                 </li>
                             </ul>
@@ -897,7 +916,7 @@
             <section class="content">
                 <div class="container-fluid">
                     <!-- Small boxes (Stat box) -->
-                    <div class="row">
+                    {{-- <div class="row">
                         <div class="col-lg-3 col-6">
                             <!-- small box -->
                             <div class="small-box bg-info">
@@ -962,10 +981,10 @@
                             </div>
                         </div>
                         <!-- ./col -->
-                    </div>
+                    </div> --}}
                     <!-- /.row -->
                     <!-- Main row -->
-                    <div class="row">
+                    {{-- <div class="row">
                         <!-- Left col -->
                         <section class="col-lg-7 connectedSortable">
                             <!-- Custom tabs (Charts with tabs)-->
@@ -1522,13 +1541,14 @@
                             <!-- /.card -->
                         </section>
                         <!-- right col -->
-                    </div>
+                    </div> --}}
                     <!-- /.row (main row) -->
+                    @yield('content-manager')
                 </div><!-- /.container-fluid -->
             </section>
             <!-- /.content -->
         </div>
-        <!-- /.content-wrapper -->
+        <!-- /.content-wrapper --> 
         <footer class="main-footer">
             <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
             All rights reserved.
@@ -1600,6 +1620,8 @@
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     {{-- <script src="dist/js/pages/dashboard.js"></script> --}}
     <script src="{{ url('admin-lte/dist/js/pages/dashboard.js') }}"></script>
+
+    @yield('js')
 
 </body>
 
