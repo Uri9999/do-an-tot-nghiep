@@ -16,13 +16,17 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $categories = Category::all();
+        $query = Product::where('view_count', '>=', 0);
         if ($request->ajax()) {
             if ($request->key == 'price') {
-                $query = Product::orderBy('prod_price', 'desc');
+                $query = $query->orderBy('prod_price', 'desc');
             } else if ($request->key == 'new') {
-                $query = Product::orderBy('id', 'desc');
+                $query = $query->orderBy('id', 'desc');
             } else {
-                $query = Product::orderBy('prod_name', 'desc');
+                $query = $query->orderBy('prod_name', 'desc');
+            }
+            if ($request->categoryId != null) {
+                $query = $query->where('category_id', $request->categoryId);
             }
             $count = $query->count();
             $products = $query->skip($request->skip * $request->take)->take($request->take)->get();
@@ -77,7 +81,8 @@ class HomeController extends Controller
     public function getCart(Request $request)
     {
         if ($request->ajax()) {
-            $cart = Cart::where('user_id', Auth::id())->get();
+            $cart = Cart::with('product')
+                ->where('user_id', Auth::id())->get();
             return response()->json([
                 'data' => [
                     'cart' => $cart,
@@ -85,6 +90,21 @@ class HomeController extends Controller
                 'status' => Response::HTTP_OK
             ]);
         }
+    }
 
+    public function removeCart(Request $request)
+    {
+        try {
+            if ($request->ajax()) {
+                Cart::destroy($request->data);
+                return response()->json([
+                    'data' => [],
+                    'message' => 'success',
+                    'status' => Response::HTTP_OK
+                ]);
+            }
+        } catch (\Throwable $th) {
+            return response()->json(['message' => $th->getMessage()], Response::HTTP_BAD_REQUEST);
+        }
     }
 }

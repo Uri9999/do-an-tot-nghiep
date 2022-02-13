@@ -16,7 +16,7 @@ class Product extends Model
     public function comments() {
         return $this->hasMany('App\Models\Comment', 'product_id');
     }
-    // public function carts(){
-    //     return $this->hasMany('App\Models\Cart');
-    // }
+    public function carts(){
+        return $this->hasMany('App\Models\Cart');
+    }
 }

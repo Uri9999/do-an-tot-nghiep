@@ -886,7 +886,8 @@ document.addEventListener('alpine:init', function () {
       option: {
         skip: 0,
         take: 9,
-        key: 'name'
+        key: 'name',
+        categoryId: null
       },
       total: null,
       totalPage: null,
@@ -941,6 +942,12 @@ document.addEventListener('alpine:init', function () {
             }
           }, _callee2);
         }))();
+      },
+      getCatProduct: function getCatProduct(categoryId) {
+        this.option.categoryId = categoryId;
+        this.option.skip = 0;
+        this.option.take = 9;
+        this.getData();
       },
       updateTake: function updateTake(value) {
         this.option.take = value;

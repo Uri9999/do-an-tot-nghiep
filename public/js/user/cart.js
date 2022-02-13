@@ -878,6 +878,8 @@ document.addEventListener('alpine:init', function () {
   Alpine.data('cartIndex', function () {
     return {
       items: [],
+      quantityNumber: [1, 2, 3],
+      subTotal: 0,
       init: function init() {
         var _this = this;
 
@@ -886,11 +888,10 @@ document.addEventListener('alpine:init', function () {
             while (1) {
               switch (_context.prev = _context.next) {
                 case 0:
-                  console.log(window.location.href.split('#')[0]);
-                  _context.next = 3;
+                  _context.next = 2;
                   return _this.getData();
 
-                case 3:
+                case 2:
                 case "end":
                   return _context.stop();
               }
@@ -899,6 +900,8 @@ document.addEventListener('alpine:init', function () {
         }))();
       },
       getData: function getData() {
+        var _this2 = this;
+
         return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
           var res;
           return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
@@ -913,9 +916,11 @@ document.addEventListener('alpine:init', function () {
 
                 case 2:
                   res = _context2.sent;
-                  console.log(res.data.data);
+                  _this2.items = res.data.data.cart;
 
-                case 4:
+                  _this2.calculateSubTotal();
+
+                case 5:
                 case "end":
                   return _context2.stop();
               }
@@ -923,30 +928,17 @@ document.addEventListener('alpine:init', function () {
           }, _callee2);
         }))();
       },
-      updateTake: function updateTake(value) {
-        this.option.take = value;
-        this.getData();
+      updatePrice: function updatePrice(element, index) {
+        var item = this.items[index];
+        var quantity = element.value;
+        var classItem = '.product-' + item.product.id;
+        var totalPrice = quantity * item.product.prod_price;
+        $(classItem).text(totalPrice);
+        item.total_price = totalPrice;
+        this.calculateSubTotal();
       },
-      next: function next() {
-        if (this.currentPage > 1) {
-          this.currentPage--;
-          this.option.skip = this.currentPage;
-          this.getData();
-        }
-      },
-      previous: function previous() {
-        if (this.currentPage < this.totalPage) {
-          this.currentPage++;
-          this.option.skip = this.currentPage;
-          this.getData();
-        }
-      },
-      updateKey: function updateKey(value) {
-        this.option.key = value;
-        this.getData();
-      },
-      addCart: function addCart(productId) {
-        var _this2 = this;
+      removeCart: function removeCart(cartId) {
+        var _this3 = this;
 
         return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
           return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
@@ -955,18 +947,17 @@ document.addEventListener('alpine:init', function () {
                 case 0:
                   _context3.next = 2;
                   return axios({
-                    url: window.location.href.split('#')[0] + '/add-cart',
+                    url: window.location.href.split('#')[0] + '/remove-cart',
                     method: 'POST',
                     data: {
-                      data: productId
+                      data: cartId
                     },
                     headers: {
                       'Content-Type': 'application/json'
                     }
                   }).then(function (response) {
-                    _this2.showSuccess();
+                    _this3.getData();
                   })["catch"](function (error) {
-                    window.location.href = location.origin + '/login';
                     console.log(error);
                   });
 
@@ -978,15 +969,10 @@ document.addEventListener('alpine:init', function () {
           }, _callee3);
         }))();
       },
-      showSuccess: function showSuccess() {
-        setTimeout(function () {
-          $('.notice').removeClass('d-none');
-          $(".notice").addClass('d-block');
-          setTimeout(function () {
-            $(".notice").removeClass('d-block');
-            $(".notice").addClass('d-none');
-          }, 1000);
-        }, 100);
+      calculateSubTotal: function calculateSubTotal() {
+        this.subTotal = this.items.reduce(function (accumulator, currentValue, currentIndex, array) {
+          return accumulator += currentValue.total_price;
+        }, 0);
       }
     };
   });

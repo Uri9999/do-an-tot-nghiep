@@ -19,3 +19,8 @@
   display: block;
 }
 
+.color-red {
+  color: #f7544a !important;
+  font-weight: 500;
+}
+

@@ -14,6 +14,7 @@ document.addEventListener('alpine:init', () => {
             skip: 0,
             take: 9,
             key: 'name',
+            categoryId: null,
         },
         total: null,
         totalPage: null,
@@ -33,6 +34,13 @@ document.addEventListener('alpine:init', () => {
             this.products = res.data.data.products;
             this.total = res.data.data.total;
             this.totalPage = Math.floor(this.total / this.option.take);
+        },
+
+        getCatProduct(categoryId) {
+            this.option.categoryId = categoryId;
+            this.option.skip = 0;
+            this.option.take = 9;
+            this.getData();
         },
 
         updateTake(value) {

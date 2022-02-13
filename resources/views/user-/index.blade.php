@@ -9,13 +9,16 @@
         </div>
         <div class="col-md-3">
             <div class="category leftbar">
-                <h3 class="title">
+                <h3 class="title" @click="getCatProduct(null)">
                     Categories
                 </h3>
                 <ul>
                     <template x-for="(category, categoryIndex) in categories">
                         <li>
-                            <a href="#" x-text="category.cate_name"></a>
+                            <a href="#"
+                                :class="category.id == option.categoryId ? 'color-red' : ''"
+                                @click.prevent="getCatProduct(category.id)"
+                                x-text="category.cate_name"></a>
                         </li>
                     </template>
                 </ul>

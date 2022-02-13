@@ -124,12 +124,12 @@
                                 <div class="col-md-3">
                                     <ul class="usermenu">
                                         <li>
-                                            <a href="checkout.html" class="log">
+                                            <a href="{{ route('login') }}" class="log">
                                                 Login
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="checkout2.html" class="reg">
+                                            <a href="{{ route('register') }}" class="reg">
                                                 Register
                                             </a>
                                         </li>
@@ -149,7 +149,7 @@
                                     </form>
                                 </li>
                                 <li class="option-cart">
-                                    <a href="#" class="cart-icon">
+                                    <a href="{{ route('getViewCart') }}" class="cart-icon">
                                         cart
                                         <span class="cart_no">
                                             02

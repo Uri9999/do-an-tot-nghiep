@@ -1,9 +1,12 @@
 document.addEventListener('alpine:init', () => {
     Alpine.data('cartIndex', () => ({
         items: [],
+        quantityNumber: [
+            1, 2, 3,
+        ],
+        subTotal: 0,
 
         async init() {
-            console.log(window.location.href.split('#')[0]);
             await this.getData();
         },
         async getData() {
@@ -11,64 +14,43 @@ document.addEventListener('alpine:init', () => {
                 url: window.location.href.split('#')[0] + '/data-cart',
                 method: 'GET',
             })
-            console.log(res.data.data);
+            this.items = res.data.data.cart;
+            this.calculateSubTotal();
         },
 
-        updateTake(value) {
-            this.option.take = value;
-            this.getData();
+        updatePrice(element, index) {
+            let item = this.items[index];
+            let quantity = element.value;
+            let classItem = '.product-' + item.product.id;
+            let totalPrice = quantity * item.product.prod_price;
+            $(classItem).text(totalPrice);
+            item.total_price = totalPrice;
+            this.calculateSubTotal();
         },
 
-        next() {
-            if (this.currentPage > 1) {
-                this.currentPage--;
-                this.option.skip = this.currentPage;
-                this.getData();
-            }
-        },
-
-        previous() {
-            if (this.currentPage < this.totalPage) {
-                this.currentPage++;
-                this.option.skip = this.currentPage;
-                this.getData();
-            }
-        },
-
-        updateKey(value) {
-            this.option.key = value;
-            this.getData();
-        },
-
-        async addCart(productId) {
-
+        async removeCart(cartId) {
             await axios({
-                url: window.location.href.split('#')[0] + '/add-cart',
+                url: window.location.href.split('#')[0] + '/remove-cart',
                 method: 'POST',
                 data: {
-                    data: productId,
+                    data: cartId,
                 },
                 headers: {
                     'Content-Type': 'application/json'
                 }
             }).then(response => {
-                this.showSuccess();
+                this.getData();
             })
             .catch(function (error) {
-                window.location.href = location.origin + '/login';
                 console.log(error);
             });
         },
 
-        showSuccess() {
-            setTimeout(function () {
-                $('.notice').removeClass('d-none')
-                $(".notice").addClass('d-block');
-                setTimeout(function () {
-                    $(".notice").removeClass('d-block');
-                    $(".notice").addClass('d-none');
-                }, 1000);
-            }, 100);
+        calculateSubTotal() {
+            this.subTotal = this.items.reduce(function(accumulator, currentValue, currentIndex, array) {
+                return accumulator += currentValue.total_price;
+            }, 0);
         }
+
     }))
 })
