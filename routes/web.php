@@ -105,5 +105,9 @@ Route::group(['prefix' => 'home-user'], function() {
     Route::post('/cart/remove-cart', 'user\HomeController@removeCart')->name('userRemoveCart')->middleware(['auth', 'role:user']);
     Route::get('/detail/{id}', 'user\ProductController@getDetail')->name('userGetDetail');
     Route::get('/user/cart', 'user\ProductController@getCart')->name('userGetCart');
+    Route::post('/user/cart', 'user\ProductController@updateCart')->name('userUpdateCart');
     Route::post('/user/add-cart', 'user\ProductController@addCart')->name('userAddCart');
+    Route::get('/user/delete-cart/{id}', 'user\ProductController@removeCartProduct')->name('userDeleteCart');
+    Route::get('/user/get-checkout', 'user\ProductController@getCheckout')->name('userGetCheckout');
+    Route::post('/user/checkout', 'user\ProductController@checkout')->name('userCheckout');
 });

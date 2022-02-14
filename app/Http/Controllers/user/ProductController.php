@@ -51,4 +51,45 @@ class ProductController extends Controller
             ->where('user_id', Auth::id())->get();
         return view('user-.cart')->with('cart', $cart);
     }
+
+    public function removeCartProduct(Request $request, $id)
+    {
+        Cart::destroy($id);
+        $cart = Cart::with('product')
+            ->where('user_id', Auth::id())->get();
+        return redirect()->back()->with('cart', $cart);
+    }
+
+    public function updateCart(Request $request)
+    {
+        try {
+            if ($request->ajax()) {
+                $cart = Cart::with('product')->where('id', $request['data']['cartId'])->first();
+                Cart::where('id', $request['data']['cartId'])
+                    ->update([
+                        'quantity' => $request['data']['quantity'],
+                        'total_price' => $request['data']['quantity'] * $cart->product->prod_price
+                    ]);
+                return response()->json([
+                    'data' => [
+                        'cart' => $cart,
+                    ],
+                    'status' => Response::HTTP_OK
+                ]);
+            }
+        } catch (\Throwable $th) {
+            return response()->json(['message' => $th->getMessage()], Response::HTTP_BAD_REQUEST);
+        }
+    }
+
+    public function getCheckout(Request $request)
+    {
+        $specialProducts = Product::all()->random(3);
+        return view('user-.checkout')->with('specialProducts', $specialProducts);
+    }
+
+    public function checkout(Request $request)
+    {
+        return view('user-.checkout')->with('specialProducts', $specialProducts);
+    }
 }
