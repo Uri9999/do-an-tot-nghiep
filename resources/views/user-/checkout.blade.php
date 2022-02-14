@@ -108,19 +108,20 @@
                                     </div>
                                 </div> --}}
                                 <div class="demo">
-                                    <form class="payment-card">
+                                    <form action="{{ route('userCheckout') }}" method="POST" class="payment-card">
+                                        @csrf
                                         <div class="bank-card">
                                             <div class="bank-card__side bank-card__side_front">
                                                 <div class="bank-card__inner">
                                                     <label class="bank-card__label bank-card__label_holder">
                                                         <span class="bank-card__hint">Holder of card</span>
-                                                        <input type="text" class="bank-card__field" placeholder="Holder of card" pattern="[A-Za-z, ]{2,}" name="holder-card" required>
+                                                        <input type="text" class="bank-card__field" placeholder="Holder of card" pattern="[A-Za-z, ]{2,}" name="holder_card" required>
                                                     </label>
                                                 </div>
                                                 <div class="bank-card__inner">
                                                     <label class="bank-card__label bank-card__label_number">
                                                         <span class="bank-card__hint">Number of card</span>
-                                                        <input type="text" class="bank-card__field" placeholder="Number of card" pattern="[0-9]{16}" name="number-card" required>
+                                                        <input type="text" class="bank-card__field" placeholder="Number of card" pattern="[0-9]{16}" name="number_card" required>
                                                     </label>
                                                 </div>
                                                 <div class="bank-card__inner">
@@ -129,26 +130,29 @@
                                                 <div class="bank-card__inner bank-card__footer">
                                                     <label class="bank-card__label bank-card__month">
                                                         <span class="bank-card__hint">Month</span>
-                                                        <input type="text" class="bank-card__field" placeholder="MM" maxlength="2" pattern="[0-9]{2}" name="mm-card" required>
+                                                        <input type="text" class="bank-card__field" placeholder="MM" maxlength="2" pattern="[0-9]{2}" name="mm_card" required>
                                                     </label>
                                                     <span class="bank-card__separator">/</span>
                                                     <label class="bank-card__label bank-card__year">
                                                         <span class="bank-card__hint">Year</span>
-                                                        <input type="text" class="bank-card__field" placeholder="YY" maxlength="2" pattern="[0-9]{2}" name="year-card" required>
+                                                        <input type="text" class="bank-card__field" placeholder="YY" maxlength="2" pattern="[0-9]{2}" name="year_card" required>
                                                     </label>
                                                 </div>
+                                                @if (Session::has('message'))
+                                                    <div class="alert alert-danger">{{ Session::get('message') }}</div>
+                                                @endif
                                             </div>
                                             <div class="bank-card__side bank-card__side_back">
                                                 <div class="bank-card__inner">
                                                     <label class="bank-card__label bank-card__cvc">
                                                         <span class="bank-card__hint">CVC</span>
-                                                        <input type="text" class="bank-card__field" placeholder="CVC" maxlength="3" pattern="[0-9]{3}" name="cvc-card" required>
+                                                        <input type="text" class="bank-card__field" placeholder="CVC" maxlength="3" pattern="[0-9]{3}" name="cvc_card" required>
                                                     </label>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="payment-card__footer">
-                                            <button class="payment-card__button">Checkout</button>
+                                            <button class="payment-card__button" type="submit">Checkout</button>
                                         </div>
                                     </form>
                                 </div>

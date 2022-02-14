@@ -52,7 +52,8 @@ class HomeController extends Controller
                 Cart::firstOrCreate(
                     [
                         'user_id' => Auth::id(),
-                        'product_id' => $product->id
+                        'product_id' => $product->id,
+                        'status' => Cart::UN_PAID
                     ],
                     [
                         'user_id' => Auth::id(),
@@ -82,7 +83,9 @@ class HomeController extends Controller
     {
         if ($request->ajax()) {
             $cart = Cart::with('product')
-                ->where('user_id', Auth::id())->get();
+                ->where('user_id', Auth::id())
+                ->where('status', Cart::UN_PAID)
+                ->get();
             return response()->json([
                 'data' => [
                     'cart' => $cart,

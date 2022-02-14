@@ -9,6 +9,8 @@ use App\Models\Cart;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Response;
+use Stripe\Stripe;
+use Illuminate\Support\Facades\Session;
 
 class ProductController extends Controller
 {
@@ -30,21 +32,26 @@ class ProductController extends Controller
     public function getCart(Request $request)
     {
         $cart = Cart::with('product')
-            ->where('user_id', Auth::id())->get();
+            ->where('user_id', Auth::id())
+            ->where('status', Cart::UN_PAID)
+            ->get();
         return view('user-.cart')->with('cart', $cart);
     }
 
     public function addCart(Request $request)
     {
+        $product = Product::find($request->productId);
         Cart::firstOrCreate(
             [
                 'user_id' => Auth::id(),
-                'product_id' => $request->productId
+                'product_id' => $product->id,
+                'status' => Cart::UN_PAID
             ],
             [
                 'user_id' => Auth::id(),
-                'product_id' => $request->productId,
-                'total_price' => $request->quantity_detail
+                'product_id' => $product->id,
+                'total_price' => $request->quantity_detail * $product->prod_price,
+                'quantity' => $request->quantity_detail
             ]
         );
         $cart = Cart::with('product')
@@ -90,6 +97,39 @@ class ProductController extends Controller
 
     public function checkout(Request $request)
     {
-        return view('user-.checkout')->with('specialProducts', $specialProducts);
+        try {
+            $stripe = new \Stripe\StripeClient(
+                env('PRIVATE_KEY_STRIPE')
+              );
+            $amount = Cart::where('user_id', Auth::id())
+                ->where('status', Cart::UN_PAID)
+                ->sum('total_price');
+            $token = $stripe->tokens->create([
+                'card' => [
+                    'number' => $request->number_card,
+                    'exp_month' => $request->mm_card,
+                    'exp_year' => $request->year_card,
+                    'cvc' => $request->cvc_card,
+                ],
+              ]);
+
+            $stripe->charges->create([
+                'amount' => $amount * 100,
+                'currency' => 'usd',
+                'source' => $token->id,
+                'description' => Auth::user()->email,
+              ]);
+
+            Cart::where('user_id', Auth::id())
+                ->where('status', Cart::UN_PAID)
+                ->update(['status' => Cart::PAID]);
+            dd(1);
+            return view('user-.getHomeIndex');
+        } catch (\Throwable $th) {
+            // return response()->json(['message' => $th->getMessage()], Response::HTTP_BAD_REQUEST);
+            // return redirect()->back()->with('message', $th->getMessage());
+            Session::flash('message', $th->getMessage());
+            return redirect()->back();
+        }
     }
 }
