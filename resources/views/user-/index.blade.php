@@ -3,7 +3,7 @@
 <link href="{{ url('css/user/index.css') }}" rel="stylesheet">
 @endsection
 @section('content')
-    <div class="row" x-data="userIndex">
+    <div class="row" x-show="screen == 1">
         <div class="notice d-none">
             <img src="{{ url('images/success.png') }}" alt="">
         </div>
@@ -356,7 +356,7 @@
                                     New
                                 </div>
                                 <div class="thumbnail">
-                                    <a href="details.html">
+                                    <a :href="'home-user/detail/' + product.id">
                                         <img alt="Product Name" style="max-height: 220px;"
                                             :src="'profile_images/' + product.prod_img">
                                     </a>
@@ -371,10 +371,12 @@
                                     <button class="button add-cart" type="button" @click="addCart(product.id)">
                                         Add To Cart
                                     </button>
-                                    <button class="button compare" type="button">
-                                        <i class="fa fa-exchange">
-                                        </i>
-                                    </button>
+                                    <a :href="'home-user/detail/' + product.id">
+                                        <button class="button compare" type="button">
+                                            <i class="fa fa-exchange">
+                                            </i>
+                                        </button>
+                                    </a>
                                     <button class="button wishlist" type="button">
                                         <i class="fa fa-heart-o">
                                         </i>
@@ -392,8 +394,10 @@
                                     New
                                 </div>
                                 <div class="thumbnail">
-                                    <img :src="'profile_images/' + product.prod_img" alt="Product Name"
-                                        style="max-height: 220px;">
+                                    <a :href="'home-user/detail/' + product.id">
+                                        <img :src="'profile_images/' + product.prod_img" alt="Product Name"
+                                            style="max-height: 220px;">
+                                    </a>
                                 </div>
                                 <div class="product-list-description">
                                     <div class="productname" x-text="product.prod_name"></div>
@@ -428,10 +432,12 @@
                                             <button class="button" @click="addCart(product.id)">
                                                 Add To Cart
                                             </button>
-                                            <button class="button compare">
-                                                <i class="fa fa-exchange">
-                                                </i>
-                                            </button>
+                                            <a :href="'home-user/detail/' + product.id">
+                                                <button class="button compare">
+                                                    <i class="fa fa-exchange">
+                                                    </i>
+                                                </button>
+                                            </a>
                                             <button class="button favorite">
                                                 <i class="fa fa-heart-o">
                                                 </i>

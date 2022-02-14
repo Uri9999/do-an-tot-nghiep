@@ -880,8 +880,12 @@ document.addEventListener('alpine:init', function () {
       items: [],
       categories: [],
       products: [],
+      cartProducts: [],
+      subTotal: 0,
+      lengthCart: 0,
       type: 1,
       takes: [3, 6, 9],
+      screen: 1,
       keys: ['name', 'price', 'new'],
       option: {
         skip: 0,
@@ -904,6 +908,10 @@ document.addEventListener('alpine:init', function () {
                   return _this.getData();
 
                 case 2:
+                  _context.next = 4;
+                  return _this.getCart();
+
+                case 4:
                 case "end":
                   return _context.stop();
               }
@@ -943,6 +951,76 @@ document.addEventListener('alpine:init', function () {
           }, _callee2);
         }))();
       },
+      getCart: function getCart() {
+        var _this3 = this;
+
+        return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+          var res;
+          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+            while (1) {
+              switch (_context3.prev = _context3.next) {
+                case 0:
+                  _context3.next = 2;
+                  return axios({
+                    url: window.location.href.split('#')[0] + '/cart/data-cart',
+                    method: 'GET'
+                  });
+
+                case 2:
+                  res = _context3.sent;
+
+                  if (res.data.data.cart) {
+                    _this3.cartProducts = res.data.data.cart;
+                    _this3.lengthCart = _this3.cartProducts.length;
+                  }
+
+                  _this3.calculateSubTotal();
+
+                case 5:
+                case "end":
+                  return _context3.stop();
+              }
+            }
+          }, _callee3);
+        }))();
+      },
+      removeCart: function removeCart(cartId) {
+        var _this4 = this;
+
+        return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
+          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+            while (1) {
+              switch (_context4.prev = _context4.next) {
+                case 0:
+                  _context4.next = 2;
+                  return axios({
+                    url: window.location.href.split('#')[0] + '/cart/remove-cart',
+                    method: 'POST',
+                    data: {
+                      data: cartId
+                    },
+                    headers: {
+                      'Content-Type': 'application/json'
+                    }
+                  }).then(function (response) {
+                    _this4.getCart();
+                  })["catch"](function (error) {
+                    console.log(error);
+                  });
+
+                case 2:
+                case "end":
+                  return _context4.stop();
+              }
+            }
+          }, _callee4);
+        }))();
+      },
+      calculateSubTotal: function calculateSubTotal() {
+        this.subTotal = this.cartProducts.reduce(function (accumulator, currentValue, currentIndex, array) {
+          return accumulator += currentValue.total_price;
+        }, 0);
+      },
       getCatProduct: function getCatProduct(categoryId) {
         this.option.categoryId = categoryId;
         this.option.skip = 0;
@@ -972,14 +1050,14 @@ document.addEventListener('alpine:init', function () {
         this.getData();
       },
       addCart: function addCart(productId) {
-        var _this3 = this;
+        var _this5 = this;
 
-        return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
-          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+        return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
+          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
             while (1) {
-              switch (_context3.prev = _context3.next) {
+              switch (_context5.prev = _context5.next) {
                 case 0:
-                  _context3.next = 2;
+                  _context5.next = 2;
                   return axios({
                     url: window.location.href.split('#')[0] + '/add-cart',
                     method: 'POST',
@@ -990,7 +1068,9 @@ document.addEventListener('alpine:init', function () {
                       'Content-Type': 'application/json'
                     }
                   }).then(function (response) {
-                    _this3.showSuccess();
+                    _this5.getCart();
+
+                    _this5.showSuccess();
                   })["catch"](function (error) {
                     window.location.href = location.origin + '/login';
                     console.log(error);
@@ -998,10 +1078,10 @@ document.addEventListener('alpine:init', function () {
 
                 case 2:
                 case "end":
-                  return _context3.stop();
+                  return _context5.stop();
               }
             }
-          }, _callee3);
+          }, _callee5);
         }))();
       },
       showSuccess: function showSuccess() {

@@ -1,6 +1,6 @@
 @extends('user-.layout')
 @section('content')
-    <div class="container shopping-cart" x-data="cartIndex">
+    <div class="container shopping-cart">
         <div class="row">
             <div class="col-md-12">
                 <h3 class="title">
@@ -8,10 +8,10 @@
                 </h3>
                 <div class="clearfix">
                 </div>
-                <div class="text-align:center;" x-show="items.length == 0">
+                <div class="text-align:center;">
                     <h3>There are no products in the cart</h3>
                 </div>
-                <table class="shop-table" x-show="items.lenth != 0">
+                <table class="shop-table">
                     <thead>
                         <tr>
                             <th>
@@ -35,15 +35,17 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <template x-for="(item, itemIndex) in items">
+                        {{-- <template x-for="(item, itemIndex) in items"> --}}
+                        @foreach ($cart as $item)
                             <tr>
                                 <td>
                                     <img alt="Product Name" style="max-height: 130px;"
-                                        :src="'/profile_images/' + item.product.prod_img">
+                                        src="{{ url('profile_images/') . '/' . $item->product->prod_img }}">
                                 </td>
                                 <td>
                                     <div class="shop-details">
-                                        <div class="productname" x-text="item.product.prod_name">
+                                        <div class="productname">
+                                            {{ $item->product->prod_name }}
                                         </div>
                                         <p>
                                             <img alt="" src="{{ url('user/images/star.png') }}">
@@ -70,40 +72,45 @@
                                         </div>
                                         <p>
                                             Product Code :
-                                            <strong class="pcode" x-text="item.product.id">
+                                            <strong class="pcode">
+                                                {{ $item->product->id }}
                                             </strong>
                                         </p>
                                     </div>
                                 </td>
                                 <td>
-                                    <h5 x-text="item.product.prod_price">
-                                        $200.00
+                                    <h5>
+                                        {{ $item->product->prod_price }}
                                     </h5>
                                 </td>
+                                <input type="hidden" name="price" value="{{ $item->product->prod_price }}">
                                 <td>
-                                    <select name="quantiry" @change="updatePrice($event.target.options[$event.target.selectedIndex], itemIndex)">
+                                    {{-- <select name="quantiry" @change="updatePrice($event.target.options[$event.target.selectedIndex], itemIndex)">
                                         <template x-for="(item, itemIndex) in quantityNumber">
                                             <option :value="item" x-text="item">
                                             </option>
                                         </template>
-                                    </select>
+                                    </select> --}}
+                                    <input class="form-control text-center align-middle quantity" value="1" type="number"
+                                        name="quantity-detail" min="1">
                                 </td>
-                                <td>
+                                <td class="subtotal-cart">
                                     <h5>
-                                        <strong class="red" 
-                                            :class="'product-' + item.product.id"
-                                            x-text="item.product.prod_price">
-                                            $200.00
+                                        <strong class="red">
+                                            {{ $item->product->prod_price }}
                                         </strong>
                                     </h5>
                                 </td>
+                                <input type="hidden" name="subPrice" value="{{ $item->product->prod_price }}">
                                 <td>
                                     <a href="#" @click.prevent="removeCart(item.id)">
                                         <img src="{{ url('user/images/remove.png') }}" alt="">
                                     </a>
                                 </td>
                             </tr>
-                        </template>
+                        @endforeach
+
+                        {{-- </template> --}}
                     </tbody>
                     {{-- <tfoot>
                         <tr>
@@ -145,7 +152,7 @@
                                 <h5>
                                     Sub Total
                                 </h5>
-                                <span x-text="subTotal">
+                                <span>
                                     $1.000.00
                                 </span>
                             </div>
@@ -153,7 +160,7 @@
                                 <h5>
                                     GRAND TOTAL
                                 </h5>
-                                <span x-text="subTotal">
+                                <span>
                                     $1.000.00
                                 </span>
                             </div>

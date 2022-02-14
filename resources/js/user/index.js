@@ -3,8 +3,12 @@ document.addEventListener('alpine:init', () => {
         items: [],
         categories: [],
         products: [],
+        cartProducts: [],
+        subTotal: 0,
+        lengthCart: 0,
         type: 1,
         takes: [3, 6, 9],
+        screen: 1,
         keys: [
             'name',
             'price',
@@ -22,6 +26,7 @@ document.addEventListener('alpine:init', () => {
 
         async init() {
             await this.getData();
+            await this.getCart();
         },
         async getData() {
             let res = await axios({
@@ -34,6 +39,42 @@ document.addEventListener('alpine:init', () => {
             this.products = res.data.data.products;
             this.total = res.data.data.total;
             this.totalPage = Math.floor(this.total / this.option.take);
+        },
+
+        async getCart() {
+            let res = await axios({
+                url: window.location.href.split('#')[0] + '/cart/data-cart',
+                method: 'GET',
+            })
+            if (res.data.data.cart) {
+                this.cartProducts = res.data.data.cart;
+                this.lengthCart = this.cartProducts.length;
+            }
+            this.calculateSubTotal();
+        },
+
+        async removeCart(cartId) {
+            await axios({
+                url: window.location.href.split('#')[0] + '/cart/remove-cart',
+                method: 'POST',
+                data: {
+                    data: cartId,
+                },
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(response => {
+                this.getCart();
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        },
+
+        calculateSubTotal() {
+            this.subTotal = this.cartProducts.reduce(function(accumulator, currentValue, currentIndex, array) {
+                return accumulator += currentValue.total_price;
+            }, 0);
         },
 
         getCatProduct(categoryId) {
@@ -81,6 +122,7 @@ document.addEventListener('alpine:init', () => {
                     'Content-Type': 'application/json'
                 }
             }).then(response => {
+                this.getCart();
                 this.showSuccess();
             })
             .catch(function (error) {

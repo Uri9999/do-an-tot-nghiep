@@ -16,17 +16,18 @@
     <link href="{{ url('user/css/font-awesome.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ url('user/css/flexslider.css') }}" type="text/css" media="screen" />
     <link href="{{ url('user/css/style.css') }}" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     @yield('css')
 </head>
 
 <body>
-    <div class="wrapper">
+    <div class="wrapper" x-data="userIndex">
         <div class="header">
             <div class="container">
                 <div class="row">
                     <div class="col-md-2 col-sm-2">
                         <div class="logo">
-                            <a href="index.html">
+                            <a href="{{ route('getHomeIndex') }}">
                                 <img src="{{ url('user/images/logo.png') }}" alt="FlatShop">
                             </a>
                         </div>
@@ -59,28 +60,6 @@
                                                 <li>
                                                     <a href="#">
                                                         Gem
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="dorpdown">
-                                            <a href="#">
-                                                USD
-                                            </a>
-                                            <ul class="subnav">
-                                                <li>
-                                                    <a href="#">
-                                                        USD
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        UKD
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        FER
                                                     </a>
                                                 </li>
                                             </ul>
@@ -149,84 +128,59 @@
                                     </form>
                                 </li>
                                 <li class="option-cart">
-                                    <a href="{{ route('getViewCart') }}" class="cart-icon">
+                                    <a href="{{ route('userGetCart') }}" class="cart-icon">
                                         cart
-                                        <span class="cart_no">
-                                            02
+                                        <span class="cart_no" x-text="lengthCart">
                                         </span>
                                     </a>
                                     <ul class="option-cart-item">
-                                        <li>
-                                            <div class="cart-item">
-                                                <div class="image">
-                                                    <img src="images/products/thum/products-01.png" alt="">
+                                        <template x-for="(item, itemIndex) in cartProducts">
+                                            <li x-show="itemIndex < 3">
+                                                <div class="cart-item">
+                                                    <div class="image">
+                                                        <a :href="'home-user/detail/' + item.product.id">
+                                                            <img :src="'profile_images/' + item.product.prod_img" alt="">
+                                                        </a>
+                                                    </div>
+                                                    <div class="item-description">
+                                                        <p class="name" x-text="item.product.prod_name">
+                                                        </p>
+                                                        <p>
+                                                            Size:
+                                                            <span class="light-red">
+                                                                One size
+                                                            </span>
+                                                            <br>
+                                                            Quantity:
+                                                            <span class="light-red" x-text="item.quantity">
+                                                            </span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="right">
+                                                        <p class="price" x-text="item.total_price">
+                                                            $30.00
+                                                        </p>
+                                                        <a href="#" 
+                                                            @click.prevent="removeCart(item.id)"
+                                                            class="remove">
+                                                            <img src="{{ url('user/images/remove.png') }}"
+                                                                alt="remove">
+                                                        </a>
+                                                    </div>
                                                 </div>
-                                                <div class="item-description">
-                                                    <p class="name">
-                                                        Lincoln chair
-                                                    </p>
-                                                    <p>
-                                                        Size:
-                                                        <span class="light-red">
-                                                            One size
-                                                        </span>
-                                                        <br>
-                                                        Quantity:
-                                                        <span class="light-red">
-                                                            01
-                                                        </span>
-                                                    </p>
-                                                </div>
-                                                <div class="right">
-                                                    <p class="price">
-                                                        $30.00
-                                                    </p>
-                                                    <a href="#" class="remove">
-                                                        <img src="{{ url('user/images/remove.png') }}" alt="remove">
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="cart-item">
-                                                <div class="image">
-                                                    <img src="images/products/thum/products-02.png" alt="">
-                                                </div>
-                                                <div class="item-description">
-                                                    <p class="name">
-                                                        Lincoln chair
-                                                    </p>
-                                                    <p>
-                                                        Size:
-                                                        <span class="light-red">
-                                                            One size
-                                                        </span>
-                                                        <br>
-                                                        Quantity:
-                                                        <span class="light-red">
-                                                            01
-                                                        </span>
-                                                    </p>
-                                                </div>
-                                                <div class="right">
-                                                    <p class="price">
-                                                        $30.00
-                                                    </p>
-                                                    <a href="#" class="remove">
-                                                        <img src="{{ url('user/images/remove.png') }}" alt="remove">
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </li>
+                                            </li>
+                                        </template>
                                         <li>
                                             <span class="total">
                                                 Total
-                                                <strong>
+                                                <strong x-text="subTotal">
                                                     $60.00
                                                 </strong>
                                             </span>
-                                            <button class="checkout" onClick="location.href='checkout.html'">
-                                                CheckOut
+                                            <button class="checkout">
+                                                <a href="{{ route('userGetCart') }}">
+                                                    My Cart
+                                                </a>
                                             </button>
                                         </li>
                                     </ul>
@@ -431,787 +385,7 @@
         <div class="container_fullwidth">
             <div class="container">
                 @yield('content')
-                {{-- <div class="row">
-                    <div class="col-md-3">
-                        <div class="category leftbar">
-                            <h3 class="title">
-                                Categories
-                            </h3>
-                            <ul>
-                                @foreach ($categories as $category)
-                                    <li>
-                                        <a href="#">
-                                            {{ $category->cate_name }}
-                                        </a>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
-                        <div class="clearfix">
-                        </div>
-                        <div class="branch leftbar">
-                            <h3 class="title">
-                                Branch
-                            </h3>
-                            <ul>
-                                <li>
-                                    <a href="#">
-                                        New
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        Sofa
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        Salon
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        New Trend
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        Living room
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        Bed room
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="clearfix">
-                        </div>
-                        <div class="price-filter leftbar">
-                            <h3 class="title">
-                                Price
-                            </h3>
-                            <form class="pricing">
-                                <label>
-                                    $
-                                    <input type="number">
-                                </label>
-                                <span class="separate">
-                                    -
-                                </span>
-                                <label>
-                                    $
-                                    <input type="number">
-                                </label>
-                                <input type="submit" value="Go">
-                            </form>
-                        </div>
-                        <div class="clearfix">
-                        </div>
-                        <div class="clolr-filter leftbar">
-                            <h3 class="title">
-                                Color
-                            </h3>
-                            <ul>
-                                <li>
-                                    <a href="#" class="red-bg">
-                                        light red
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class=" yellow-bg">
-                                        yellow"
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="black-bg ">
-                                        black
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="pink-bg">
-                                        pink
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="dkpink-bg">
-                                        dkpink
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="chocolate-bg">
-                                        chocolate
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="orange-bg">
-                                        orange-bg
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="off-white-bg">
-                                        off-white
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="extra-lightgreen-bg">
-                                        extra-lightgreen
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="lightgreen-bg">
-                                        lightgreen
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="biscuit-bg">
-                                        biscuit
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="chocolatelight-bg">
-                                        chocolatelight
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="clearfix">
-                        </div>
-                        <div class="product-tag leftbar">
-                            <h3 class="title">
-                                Products
-                                <strong>
-                                    Tags
-                                </strong>
-                            </h3>
-                            <ul>
-                                <li>
-                                    <a href="#">
-                                        Lincoln us
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        SDress for Girl
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        Corner
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        Window
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        PG
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        Oscar
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        Bath room
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        PSD
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="clearfix">
-                        </div>
-                        <div class="others leftbar">
-                            <h3 class="title">
-                                Others
-                            </h3>
-                        </div>
-                        <div class="clearfix">
-                        </div>
-                        <div class="others leftbar">
-                            <h3 class="title">
-                                Others
-                            </h3>
-                        </div>
-                        <div class="clearfix">
-                        </div>
-                        <div class="fbl-box leftbar">
-                            <h3 class="title">
-                                Facebook
-                            </h3>
-                            <span class="likebutton">
-                                <a href="#">
-                                    <img src="images/fblike.png" alt="">
-                                </a>
-                            </span>
-                            <p>
-                                12k people like Flat Shop.
-                            </p>
-                            <ul>
-                                <li>
-                                    <a href="#">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                    </a>
-                                </li>
-                            </ul>
-                            <div class="fbplug">
-                                <a href="#">
-                                    <span>
-                                        <img src="images/fbicon.png" alt="">
-                                    </span>
-                                    Facebook social plugin
-                                </a>
-                            </div>
-                        </div>
-                        <div class="clearfix">
-                        </div>
-                        <div class="leftbanner">
-                            <img src="{{ url('user/images/banner-small-01.png') }}" alt="">
-                        </div>
-                    </div>
-                    <div class="col-md-9">
-                        <div class="banner">
-                            <div class="bannerslide" id="bannerslide">
-                                <ul class="slides">
-                                    <li>
-                                        <a href="#">
-                                            <img src="{{ url('user/images/banner-01.jpg') }}" alt="" />
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <img src="{{ url('user/images/banner-02.jpg') }}" alt="" />
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="clearfix">
-                        </div>
-                        <div class="products-grid">
-                            <div class="toolbar">
-                                <div class="sorter">
-                                    <div class="view-mode">
-                                        <a href="productlitst.html" class="list">
-                                            List
-                                        </a>
-                                        <a href="#" class="grid active">
-                                            Grid
-                                        </a>
-                                    </div>
-                                    <div class="sort-by">
-                                        Sort by :
-                                        <select name="">
-                                            <option value="Default" selected>
-                                                Default
-                                            </option>
-                                            <option value="Name">
-                                                Name
-                                            </option>
-                                            <option value="Price">
-                                                Price
-                                            </option>
-                                        </select>
-                                    </div>
-                                    <div class="limiter">
-                                        Show :
-                                        <select name="">
-                                            <option value="3" selected>
-                                                3
-                                            </option>
-                                            <option value="6">
-                                                6
-                                            </option>
-                                            <option value="9">
-                                                9
-                                            </option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="pager">
-                                    <a href="#" class="prev-page">
-                                        <i class="fa fa-angle-left">
-                                        </i>
-                                    </a>
-                                    <a href="#" class="active">
-                                        1
-                                    </a>
-                                    <a href="#">
-                                        2
-                                    </a>
-                                    <a href="#">
-                                        3
-                                    </a>
-                                    <a href="#" class="next-page">
-                                        <i class="fa fa-angle-right">
-                                        </i>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="clearfix">
-                            </div>
-                            <div class="row">
-                                <div class="col-md-4 col-sm-6">
-                                    <div class="products">
-                                        <div class="thumbnail">
-                                            <a href="details.html">
-                                                <img src="images/products/small/products-05.png" alt="Product Name">
-                                            </a>
-                                        </div>
-                                        <div class="productname">
-                                            Iphone 5s Gold 32 Gb 2013
-                                        </div>
-                                        <h4 class="price">
-                                            $451.00
-                                        </h4>
-                                        <div class="button_group">
-                                            <button class="button add-cart" type="button">
-                                                Add To Cart
-                                            </button>
-                                            <button class="button compare" type="button">
-                                                <i class="fa fa-exchange">
-                                                </i>
-                                            </button>
-                                            <button class="button wishlist" type="button">
-                                                <i class="fa fa-heart-o">
-                                                </i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-sm-6">
-                                    <div class="products">
-                                        <div class="thumbnail">
-                                            <a href="details.html">
-                                                <img src="images/products/small/products-06.png" alt="Product Name">
-                                            </a>
-                                        </div>
-                                        <div class="productname">
-                                            Iphone 5s Gold 32 Gb 2013
-                                        </div>
-                                        <h4 class="price">
-                                            $451.00
-                                        </h4>
-                                        <div class="button_group">
-                                            <button class="button add-cart" type="button">
-                                                Add To Cart
-                                            </button>
-                                            <button class="button compare" type="button">
-                                                <i class="fa fa-exchange">
-                                                </i>
-                                            </button>
-                                            <button class="button wishlist" type="button">
-                                                <i class="fa fa-heart-o">
-                                                </i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-sm-6">
-                                    <div class="products">
-                                        <div class="offer">
-                                            New
-                                        </div>
-                                        <div class="thumbnail">
-                                            <a href="details.html">
-                                                <img src="images/products/small/products-07.png" alt="Product Name">
-                                            </a>
-                                        </div>
-                                        <div class="productname">
-                                            Iphone 5s Gold 32 Gb 2013
-                                        </div>
-                                        <h4 class="price">
-                                            $451.00
-                                        </h4>
-                                        <div class="button_group">
-                                            <button class="button add-cart" type="button">
-                                                Add To Cart
-                                            </button>
-                                            <button class="button compare" type="button">
-                                                <i class="fa fa-exchange">
-                                                </i>
-                                            </button>
-                                            <button class="button wishlist" type="button">
-                                                <i class="fa fa-heart-o">
-                                                </i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-sm-6">
-                                    <div class="products">
-                                        <div class="thumbnail">
-                                            <a href="details.html">
-                                                <img src="images/products/small/products-05.png" alt="Product Name">
-                                            </a>
-                                        </div>
-                                        <div class="productname">
-                                            Iphone 5s Gold 32 Gb 2013
-                                        </div>
-                                        <h4 class="price">
-                                            $451.00
-                                        </h4>
-                                        <div class="button_group">
-                                            <button class="button add-cart" type="button">
-                                                Add To Cart
-                                            </button>
-                                            <button class="button compare" type="button">
-                                                <i class="fa fa-exchange">
-                                                </i>
-                                            </button>
-                                            <button class="button wishlist" type="button">
-                                                <i class="fa fa-heart-o">
-                                                </i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-sm-6">
-                                    <div class="products">
-                                        <div class="thumbnail">
-                                            <a href="details.html">
-                                                <img src="images/products/small/products-06.png" alt="Product Name">
-                                            </a>
-                                        </div>
-                                        <div class="productname">
-                                            Iphone 5s Gold 32 Gb 2013
-                                        </div>
-                                        <h4 class="price">
-                                            $451.00
-                                        </h4>
-                                        <div class="button_group">
-                                            <button class="button add-cart" type="button">
-                                                Add To Cart
-                                            </button>
-                                            <button class="button compare" type="button">
-                                                <i class="fa fa-exchange">
-                                                </i>
-                                            </button>
-                                            <button class="button wishlist" type="button">
-                                                <i class="fa fa-heart-o">
-                                                </i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-sm-6">
-                                    <div class="products">
-                                        <div class="offer">
-                                            New
-                                        </div>
-                                        <div class="thumbnail">
-                                            <a href="details.html">
-                                                <img src="images/products/small/products-07.png" alt="Product Name">
-                                            </a>
-                                        </div>
-                                        <div class="productname">
-                                            Iphone 5s Gold 32 Gb 2013
-                                        </div>
-                                        <h4 class="price">
-                                            $451.00
-                                        </h4>
-                                        <div class="button_group">
-                                            <button class="button add-cart" type="button">
-                                                Add To Cart
-                                            </button>
-                                            <button class="button compare" type="button">
-                                                <i class="fa fa-exchange">
-                                                </i>
-                                            </button>
-                                            <button class="button wishlist" type="button">
-                                                <i class="fa fa-heart-o">
-                                                </i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-sm-6">
-                                    <div class="products">
-                                        <div class="thumbnail">
-                                            <a href="details.html">
-                                                <img src="images/products/small/products-05.png" alt="Product Name">
-                                            </a>
-                                        </div>
-                                        <div class="productname">
-                                            Iphone 5s Gold 32 Gb 2013
-                                        </div>
-                                        <h4 class="price">
-                                            $451.00
-                                        </h4>
-                                        <div class="button_group">
-                                            <button class="button add-cart" type="button">
-                                                Add To Cart
-                                            </button>
-                                            <button class="button compare" type="button">
-                                                <i class="fa fa-exchange">
-                                                </i>
-                                            </button>
-                                            <button class="button wishlist" type="button">
-                                                <i class="fa fa-heart-o">
-                                                </i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-sm-6">
-                                    <div class="products">
-                                        <div class="thumbnail">
-                                            <a href="details.html">
-                                                <img src="images/products/small/products-06.png" alt="Product Name">
-                                            </a>
-                                        </div>
-                                        <div class="productname">
-                                            Iphone 5s Gold 32 Gb 2013
-                                        </div>
-                                        <h4 class="price">
-                                            $451.00
-                                        </h4>
-                                        <div class="button_group">
-                                            <button class="button add-cart" type="button">
-                                                Add To Cart
-                                            </button>
-                                            <button class="button compare" type="button">
-                                                <i class="fa fa-exchange">
-                                                </i>
-                                            </button>
-                                            <button class="button wishlist" type="button">
-                                                <i class="fa fa-heart-o">
-                                                </i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-sm-6">
-                                    <div class="products">
-                                        <div class="offer">
-                                            New
-                                        </div>
-                                        <div class="thumbnail">
-                                            <a href="details.html">
-                                                <img src="images/products/small/products-07.png" alt="Product Name">
-                                            </a>
-                                        </div>
-                                        <div class="productname">
-                                            Iphone 5s Gold 32 Gb 2013
-                                        </div>
-                                        <h4 class="price">
-                                            $451.00
-                                        </h4>
-                                        <div class="button_group">
-                                            <button class="button add-cart" type="button">
-                                                Add To Cart
-                                            </button>
-                                            <button class="button compare" type="button">
-                                                <i class="fa fa-exchange">
-                                                </i>
-                                            </button>
-                                            <button class="button wishlist" type="button">
-                                                <i class="fa fa-heart-o">
-                                                </i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="clearfix">
-                            </div>
-                            <div class="toolbar">
-                                <div class="sorter bottom">
-                                    <div class="view-mode">
-                                        <a href="productlitst.html" class="list">
-                                            List
-                                        </a>
-                                        <a href="#" class="grid active">
-                                            Grid
-                                        </a>
-                                    </div>
-                                    <div class="sort-by">
-                                        Sort by :
-                                        <select name="">
-                                            <option value="Default" selected>
-                                                Default
-                                            </option>
-                                            <option value="Name">
-                                                Name
-                                            </option>
-                                            <option value="">
-                                                Price
-                                            </option>
-                                        </select>
-                                    </div>
-                                    <div class="limiter">
-                                        Show :
-                                        <select name="">
-                                            <option value="3" selected>
-                                                3
-                                            </option>
-                                            <option value="6">
-                                                6
-                                            </option>
-                                            <option value="9">
-                                                9
-                                            </option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="pager">
-                                    <a href="#" class="prev-page">
-                                        <i class="fa fa-angle-left">
-                                        </i>
-                                    </a>
-                                    <a href="#" class="active">
-                                        1
-                                    </a>
-                                    <a href="#">
-                                        2
-                                    </a>
-                                    <a href="#">
-                                        3
-                                    </a>
-                                    <a href="#" class="next-page">
-                                        <i class="fa fa-angle-right">
-                                        </i>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="clearfix">
-                            </div>
-                        </div>
-                    </div>
-                </div> --}}
                 <div class="clearfix">
-                </div>
-                <div class="our-brand">
-                    <h3 class="title">
-                        <strong>
-                            Our
-                        </strong>
-                        Brands
-                    </h3>
-                    <div class="control">
-                        <a id="prev_brand" class="prev" href="#">
-                            &lt;
-                        </a>
-                        <a id="next_brand" class="next" href="#">
-                            &gt;
-                        </a>
-                    </div>
-                    <ul id="braldLogo">
-                        <li>
-                            <ul class="brand_item">
-                                <li>
-                                    <a href="#">
-                                        <div class="brand-logo">
-                                            <img src="{{ url('user/images/envato.png') }}" alt="">
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="brand-logo">
-                                            <img src="{{ url('user/images/themeforest.png') }}" alt="">
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="brand-logo">
-                                            <img src="{{ url('user/images/photodune.png') }}" alt="">
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="brand-logo">
-                                            <img src="{{ url('user/images/activeden.png') }}" alt="">
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="brand-logo">
-                                            <img src="{{ url('user/images/envato.png') }}" alt="">
-                                        </div>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <ul class="brand_item">
-                                <li>
-                                    <a href="#">
-                                        <div class="brand-logo">
-                                            <img src="{{ url('user/images/envato.png') }}" alt="">
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="brand-logo">
-                                            <img src="{{ url('user/images/themeforest.png') }}" alt="">
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="brand-logo">
-                                            <img src="{{ url('user/images/photodune.png') }}" alt="">
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="brand-logo">
-                                            <img src="{{ url('user/images/activeden.png') }}" alt="">
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="brand-logo">
-                                            <img src="{{ url('user/images/envato.png') }}" alt="">
-                                        </div>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
                 </div>
             </div>
         </div>
@@ -1223,8 +397,8 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="footer-logo">
-                                <a href="#">
-                                    <img src="images/logo.png" alt="">
+                                <a href="{{ route('getHomeIndex') }}">
+                                    <img src="{{ url('user/images/logo.png') }}" alt="">
                                 </a>
                             </div>
                         </div>

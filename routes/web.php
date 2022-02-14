@@ -103,4 +103,7 @@ Route::group(['prefix' => 'home-user'], function() {
     Route::get('/cart', 'user\HomeController@getViewCart')->name('getViewCart')->middleware(['auth', 'role:user']);
     Route::get('/cart/data-cart', 'user\HomeController@getCart')->name('userGetCart')->middleware(['auth', 'role:user']);
     Route::post('/cart/remove-cart', 'user\HomeController@removeCart')->name('userRemoveCart')->middleware(['auth', 'role:user']);
+    Route::get('/detail/{id}', 'user\ProductController@getDetail')->name('userGetDetail');
+    Route::get('/user/cart', 'user\ProductController@getCart')->name('userGetCart');
+    Route::post('/user/add-cart', 'user\ProductController@addCart')->name('userAddCart');
 });
