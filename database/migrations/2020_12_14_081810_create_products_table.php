@@ -16,7 +16,7 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('prod_name');
-            $table->string('prod_slug');
+            $table->string('prod_slug')->nullable();
             $table->string('prod_price');
             $table->string('prod_img');
             $table->text('prod_description');
@@ -25,7 +25,7 @@ class CreateProductsTable extends Migration
             $table->unsignedBigInteger('category_id');
             $table->integer('view_count')->default(0);
             $table->timestamps();
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            // $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
         });
     }
 

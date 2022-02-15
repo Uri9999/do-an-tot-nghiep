@@ -29,18 +29,25 @@ class ProductController extends Controller
         $product->status = $request->status;
         $product->category_id = $request->cate;
         
-        if ($files = $request->file('profile_image')) {
-            // Define upload path
-            $destinationPath = public_path('/profile_images/'); // upload path
-            // Upload Orginal Image           
-            $profileImage = date('YmdHis') . "." . $i . $files->getClientOriginalExtension();
-            $files->move($destinationPath, $profileImage);
+        // if ($files = $request->file('profile_image')) {
+        //     // Define upload path
+        //     $destinationPath = public_path('/profile_images/'); // upload path
+        //     // Upload Orginal Image           
+        //     $profileImage = date('YmdHis') . "." . $i . $files->getClientOriginalExtension();
+        //     $files->move($destinationPath, $profileImage);
             
-            $insert['image'] = "$profileImage";
-            // Save In Database
-			$product->prod_img = "$profileImage";
-			// $product->save();
+        //     $insert['image'] = "$profileImage";
+        //     // Save In Database
+		// 	$product->prod_img = "$profileImage";
+        // }
+
+        if ($request->hasFile('profile_image')) {
+            $filename = uniqid() . $request->file('profile_image')->getClientOriginalName();
+            $filename = str_replace(' ', '', $filename);
+            $request->file('profile_image')->storeAs('public/profile_images', $filename);
+            $product->prod_img = $filename;
         }
+        
         $product->save();
         }
         return redirect()->route('getProd');

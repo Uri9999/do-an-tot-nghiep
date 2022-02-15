@@ -97,6 +97,18 @@ Route::group(['prefix' => 'admin-manager', 'middleware' => ['auth', 'role:admin'
     Route::get('user/update/{id}', 'admin\UserController@update')->name('updateUser');
 
     Route::get('products', 'admin\ProductController@index')->name('productList');
+    Route::get('products/delete/{id}','admin\ProductController@destroy')->name('productDelete');
+    Route::get('products/edit/{id}','admin\ProductController@edit')->name('productEdit');
+    Route::post('products/update/{id}','admin\ProductController@update')->name('productUpdate');
+    Route::get('products/create','admin\ProductController@create')->name('productCreate');
+    Route::post('products/store','admin\ProductController@store')->name('productStore');
+
+    Route::get('category', 'admin\CategoryController@index')->name('categoryList');
+    Route::get('category/create', 'admin\CategoryController@create')->name('categoryCreate');
+    Route::post('category/store', 'admin\CategoryController@store')->name('categoryStore');
+    Route::get('category/delete/{id}', 'admin\CategoryController@destroy')->name('categoryDelete');
+    Route::get('category/edit/{id}', 'admin\CategoryController@edit')->name('categoryEdit');
+    Route::post('category/update/{id}', 'admin\CategoryController@update')->name('categoryUpdate');
 
 });
 

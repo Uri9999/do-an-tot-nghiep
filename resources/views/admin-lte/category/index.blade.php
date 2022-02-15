@@ -8,11 +8,11 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Product Manager</h1>
+                    <h1 class="m-0">List Category</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{ route('productCreate') }}">Create product</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('categoryCreate') }}">Create category</a></li>
                         <li class="breadcrumb-item active">Home</li>
                     </ol>
                 </div><!-- /.col -->
@@ -28,29 +28,26 @@
                 <thead>
                     <tr>
                         <th class="list-id">Id</th>
-                        <th class="list-name">Avatar</th>
-                        <th class="list-avatar">Name</th>
-                        <th class="list-price">Price</th>
-                        <th class="list-category">Category</th>
+                        <th class="list-name">Name</th>
+                        <th class="list-product">Quantity Product</th>
+                        <th class="list-create">Created at</th>
+                        <th class="list-update">Updated at</th>
                         <th class="list-action">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($products as $key => $product)
+                    @foreach ($categories as $key => $category)
                         <tr>
-                            <td>{{ $product->id }}</td>
+                            <td>{{ $category->id }}</td>
+                            <td>{{ $category->cate_name }}</td>
+                            <td>{{ $category->products->count() }}</td>
+                            <td>{{ Carbon\Carbon::parse($category->created_at)->format('Y-m-d') }}</td>
+                            <td>{{ Carbon\Carbon::parse($category->updated_at)->format('Y-m-d') }}</td>
                             <td>
-                                <img style="max-width: 100px;"
-                                    src="{{ url('profile_images' . '/' . $product->prod_img) }}" alt="">
-                            </td>
-                            <td>{{ $product->prod_name }}</td>
-                            <td>{{ $product->prod_price }}</td>
-                            <td>{{ $product->category->cate_name }}</td>
-                            <td>
-                                <a href="{{ route('productEdit', $product->id) }}">
+                                <a href="{{ route('categoryEdit', $category->id) }}">
                                     <button type="button" class="btn btn-primary">Update</button>
                                 </a>
-                                <a href="{{ route('productDelete', $product->id) }}">
+                                <a href="{{ route('categoryDelete', $category->id) }}">
                                     <button type="button" class="btn btn-danger">Delete</button>
                                 </a>
                             </td>
