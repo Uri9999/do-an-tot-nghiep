@@ -25,42 +25,30 @@
             </div>
             <div class="clearfix">
             </div>
-            <div class="branch leftbar">
-                <h3 class="title">
-                    Branch
-                </h3>
-                <ul>
-                    <li>
-                        <a href="#">
-                            New
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            Sofa
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            Salon
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            New Trend
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            Living room
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            Bed room
-                        </a>
-                    </li>
-                </ul>
+            <div class="special-deal leftbar">
+                <h4 class="title">
+                    Special
+                    <strong>
+                        Deals
+                    </strong>
+                </h4>
+                <template x-for="(specialProduct, specialIndex) in specialProducts">
+                    <div class="special-item">
+                        <div class="product-image">
+                            <a :href="'home-user/detail/' + specialProduct.id">
+                                <img style="max-height: 60px;" 
+                                    :src="'profile_images/' + specialProduct.prod_img"
+                                    alt="">
+                            </a>
+                        </div>
+                        <div class="product-info">
+                            <p x-text="specialProduct.prod_name">
+                            </p>
+                            <h5 class="price" x-text="specialProduct.prod_price">
+                            </h5>
+                        </div>
+                    </div>
+                </template>
             </div>
             <div class="clearfix">
             </div>
@@ -85,195 +73,30 @@
             </div>
             <div class="clearfix">
             </div>
-            <div class="clolr-filter leftbar">
-                <h3 class="title">
-                    Color
-                </h3>
-                <ul>
-                    <li>
-                        <a href="#" class="red-bg">
-                            light red
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class=" yellow-bg">
-                            yellow"
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="black-bg ">
-                            black
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="pink-bg">
-                            pink
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="dkpink-bg">
-                            dkpink
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="chocolate-bg">
-                            chocolate
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="orange-bg">
-                            orange-bg
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="off-white-bg">
-                            off-white
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="extra-lightgreen-bg">
-                            extra-lightgreen
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="lightgreen-bg">
-                            lightgreen
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="biscuit-bg">
-                            biscuit
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="chocolatelight-bg">
-                            chocolatelight
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="clearfix">
-            </div>
-            <div class="product-tag leftbar">
-                <h3 class="title">
-                    Products
+            <div class="special-deal leftbar">
+                <h4 class="title">
+                    Special
                     <strong>
-                        Tags
+                        Deals
                     </strong>
-                </h3>
-                <ul>
-                    <li>
-                        <a href="#">
-                            Lincoln us
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            SDress for Girl
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            Corner
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            Window
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            PG
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            Oscar
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            Bath room
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            PSD
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="clearfix">
-            </div>
-            <div class="others leftbar">
-                <h3 class="title">
-                    Others
-                </h3>
-            </div>
-            <div class="clearfix">
-            </div>
-            <div class="others leftbar">
-                <h3 class="title">
-                    Others
-                </h3>
-            </div>
-            <div class="clearfix">
-            </div>
-            <div class="fbl-box leftbar">
-                <h3 class="title">
-                    Facebook
-                </h3>
-                <span class="likebutton">
-                    <a href="#">
-                        <img src="images/fblike.png" alt="">
-                    </a>
-                </span>
-                <p>
-                    12k people like Flat Shop.
-                </p>
-                <ul>
-                    <li>
-                        <a href="#">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                        </a>
-                    </li>
-                </ul>
-                <div class="fbplug">
-                    <a href="#">
-                        <span>
-                            <img src="images/fbicon.png" alt="">
-                        </span>
-                        Facebook social plugin
-                    </a>
-                </div>
+                </h4>
+                <template x-for="(hotProduct, hotIndex) in hotProducts">
+                    <div class="special-item">
+                        <div class="product-image">
+                            <a :href="'home-user/detail/' + hotProduct.id">
+                                <img style="max-height: 60px;" 
+                                    :src="'profile_images/' + hotProduct.prod_img"
+                                    alt="">
+                            </a>
+                        </div>
+                        <div class="product-info">
+                            <p x-text="hotProduct.prod_name">
+                            </p>
+                            <h5 class="price" x-text="hotProduct.prod_price">
+                            </h5>
+                        </div>
+                    </div>
+                </template>
             </div>
             <div class="clearfix">
             </div>

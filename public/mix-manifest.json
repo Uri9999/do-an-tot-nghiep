@@ -1,5 +1,5 @@
 {
-    "/js/app.js": "/js/app.js?id=e4eee3876d17f1fda2bc",
+    "/js/app.js": "/js/app.js?id=ac22e5bb0b6b9ebedda8",
     "/css/frontend-css/style.css": "/css/frontend-css/style.css?id=b8e3180e91612916e120",
     "/css/frontend-css/search.css": "/css/frontend-css/search.css?id=cd23a07eca6344b5dbc0",
     "/css/frontend-css/style-cart.css": "/css/frontend-css/style-cart.css?id=900d88617408782ce83d",
@@ -9,7 +9,8 @@
     "/css/admin-lte/user.css": "/css/admin-lte/user.css?id=6bf20d44ebb75a290070",
     "/css/user/index.css": "/css/user/index.css?id=1992c040b1285dd46094",
     "/css/user/checkout.css": "/css/user/checkout.css?id=25cbbf1ac3f0284dbb53",
+    "/css/user/detail.css": "/css/user/detail.css?id=296b47d301de60830e39",
     "/js/cart.js": "/js/cart.js?id=fa96a727ba0e36d9ebee",
     "/js/user/cart.js": "/js/user/cart.js?id=eaf13e89e83dd4e70e43",
-    "/js/user/index.js": "/js/user/index.js?id=3bdccdfdca38940255e0"
+    "/js/user/index.js": "/js/user/index.js?id=97700e78d44c41fc1b7a"
 }

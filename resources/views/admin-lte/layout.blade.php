@@ -354,6 +354,24 @@
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-copy"></i>
+                                <p>
+                                    Product Manager
+                                    <i class="fas fa-angle-left right"></i>
+                                    <span class="badge badge-info right">6</span>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('productList') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>List Product</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-chart-pie"></i>
                                 <p>
                                     Charts
@@ -895,7 +913,7 @@
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
-            <div class="content-header">
+            {{-- <div class="content-header">
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
@@ -909,12 +927,12 @@
                         </div><!-- /.col -->
                     </div><!-- /.row -->
                 </div><!-- /.container-fluid -->
-            </div>
+            </div> --}}
             <!-- /.content-header -->
 
             <!-- Main content -->
-            <section class="content">
-                <div class="container-fluid">
+            {{-- <section class="content">
+                <div class="container-fluid"> --}}
                     <!-- Small boxes (Stat box) -->
                     {{-- <div class="row">
                         <div class="col-lg-3 col-6">
@@ -1544,8 +1562,8 @@
                     </div> --}}
                     <!-- /.row (main row) -->
                     @yield('content-manager')
-                </div><!-- /.container-fluid -->
-            </section>
+                {{-- </div><!-- /.container-fluid -->
+            </section> --}}
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper --> 

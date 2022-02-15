@@ -885,6 +885,8 @@ document.addEventListener('alpine:init', function () {
       lengthCart: 0,
       type: 1,
       takes: [3, 6, 9],
+      specialProducts: [],
+      hotProducts: [],
       screen: 1,
       keys: ['name', 'price', 'new'],
       option: {
@@ -942,8 +944,10 @@ document.addEventListener('alpine:init', function () {
                   _this2.products = res.data.data.products;
                   _this2.total = res.data.data.total;
                   _this2.totalPage = Math.floor(_this2.total / _this2.option.take);
+                  _this2.specialProducts = res.data.data.specialProducts;
+                  _this2.hotProducts = res.data.data.hotProducts;
 
-                case 8:
+                case 10:
                 case "end":
                   return _context2.stop();
               }

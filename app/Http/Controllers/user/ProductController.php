@@ -4,8 +4,8 @@ namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Category;
 use App\Models\Cart;
+use App\Models\Transfer;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Response;
@@ -100,7 +100,7 @@ class ProductController extends Controller
         try {
             $stripe = new \Stripe\StripeClient(
                 env('PRIVATE_KEY_STRIPE')
-              );
+            );
             $amount = Cart::where('user_id', Auth::id())
                 ->where('status', Cart::UN_PAID)
                 ->sum('total_price');
@@ -111,18 +111,28 @@ class ProductController extends Controller
                     'exp_year' => $request->year_card,
                     'cvc' => $request->cvc_card,
                 ],
-              ]);
+            ]);
 
             $stripe->charges->create([
                 'amount' => $amount * 100,
                 'currency' => 'usd',
                 'source' => $token->id,
                 'description' => Auth::user()->email,
-              ]);
+            ]);
+
+            $transfer = Transfer::create([
+                'total_price' => $amount,
+                'charge_token' => 'asdfwef',
+                'user_id' => Auth::id(),
+            ]);
 
             Cart::where('user_id', Auth::id())
                 ->where('status', Cart::UN_PAID)
-                ->update(['status' => Cart::PAID]);
+                ->update([
+                    'status' => Cart::PAID,
+                    'transfer_id' => $transfer->id
+                ]);
+            
             dd(1);
             return view('user-.getHomeIndex');
         } catch (\Throwable $th) {

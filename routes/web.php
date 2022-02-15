@@ -93,8 +93,11 @@ Route::get('/socialite-login/facebook', 'Auth\SocialLoginController@processLogin
 Route::group(['prefix' => 'admin-manager', 'middleware' => ['auth', 'role:admin']], function() {
     // Route::get('/', 'admin/HomeController')->name('home');
     Route::get('users', 'admin\UserController@index')->name('users');
-    Route::get('block/{id}', 'admin\UserController@block')->name('block');
-    Route::get('update/{id}', 'admin\UserController@update')->name('updateUser');
+    Route::get('user/block/{id}', 'admin\UserController@block')->name('block');
+    Route::get('user/update/{id}', 'admin\UserController@update')->name('updateUser');
+
+    Route::get('products', 'admin\ProductController@index')->name('productList');
+
 });
 
 Route::group(['prefix' => 'home-user'], function() {

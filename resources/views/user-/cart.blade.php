@@ -1,4 +1,7 @@
 @extends('user-.layout')
+@section('css')
+<link href="{{ url('css/user/detail.css') }}" rel="stylesheet">
+@endsection
 @section('content')
     <div class="container shopping-cart">
         <div class="row">

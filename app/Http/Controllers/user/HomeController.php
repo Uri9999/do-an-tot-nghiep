@@ -17,6 +17,8 @@ class HomeController extends Controller
     {
         $categories = Category::all();
         $query = Product::where('view_count', '>=', 0);
+        $specialProducts = Product::all()->random(3);
+        $hotProducts = Product::all()->random(3);
         if ($request->ajax()) {
             if ($request->key == 'price') {
                 $query = $query->orderBy('prod_price', 'desc');
@@ -35,7 +37,9 @@ class HomeController extends Controller
                     'categories' => $categories,
                     'products' => $products,
                     'total' => $count,
-                    'key' => $request->key
+                    'key' => $request->key,
+                    'specialProducts' => $specialProducts,
+                    'hotProducts' => $hotProducts
                 ],
                 'status' => Response::HTTP_OK
             ]);

@@ -8,6 +8,8 @@ document.addEventListener('alpine:init', () => {
         lengthCart: 0,
         type: 1,
         takes: [3, 6, 9],
+        specialProducts: [],
+        hotProducts: [],
         screen: 1,
         keys: [
             'name',
@@ -39,6 +41,8 @@ document.addEventListener('alpine:init', () => {
             this.products = res.data.data.products;
             this.total = res.data.data.total;
             this.totalPage = Math.floor(this.total / this.option.take);
+            this.specialProducts = res.data.data.specialProducts;
+            this.hotProducts = res.data.data.hotProducts;
         },
 
         async getCart() {
