@@ -17,7 +17,11 @@ class Transfer extends Model
         'total_discount_amount',
     ];
 
-    public function products() {
+    public function carts() {
         return $this->hasMany('App\Models\Cart', 'transfer_id');
+    }
+
+    public function user() {
+        return $this->belongsTo('App\User');
     }
 }

@@ -75,7 +75,7 @@
             </div>
             <div class="special-deal leftbar">
                 <h4 class="title">
-                    Special
+                    Hot
                     <strong>
                         Deals
                     </strong>
@@ -101,7 +101,7 @@
             <div class="clearfix">
             </div>
             <div class="leftbanner">
-                <img src="{{ url('user/images/banner-small-01.png') }}" alt="">
+                <img src="{{ url('user/images/1752402843.jpeg') }}" alt="">
             </div>
         </div>
         <div class="col-md-9">

@@ -46,7 +46,12 @@ class User extends Authenticatable
     public function role(){
         return $this->belongsTo('App\Models\Role');
     }
+
     public function carts(){
         return $this->hasMany('App\Models\Cart');
+    }
+
+    public function transfers() {
+        return $this->hasMany('App\Models\Transfer');
     }
 }

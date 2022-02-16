@@ -133,7 +133,7 @@ class ProductController extends Controller
                     'transfer_id' => $transfer->id
                 ]);
             
-            dd(1);
+            dd('success');
             return view('user-.getHomeIndex');
         } catch (\Throwable $th) {
             // return response()->json(['message' => $th->getMessage()], Response::HTTP_BAD_REQUEST);

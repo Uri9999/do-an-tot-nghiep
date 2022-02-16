@@ -109,6 +109,10 @@ Route::group(['prefix' => 'admin-manager', 'middleware' => ['auth', 'role:admin'
     Route::get('category/delete/{id}', 'admin\CategoryController@destroy')->name('categoryDelete');
     Route::get('category/edit/{id}', 'admin\CategoryController@edit')->name('categoryEdit');
     Route::post('category/update/{id}', 'admin\CategoryController@update')->name('categoryUpdate');
+    Route::get('order', 'admin\OrderController@index')->name('orderList');
+    Route::get('order/detail/{id}', 'admin\OrderController@show')->name('orderDetail');
+
+    Route::get('coupon', 'admin\CouponController@index')->name('couponList');
 
 });
 

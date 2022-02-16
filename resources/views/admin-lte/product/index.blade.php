@@ -45,7 +45,12 @@
                             </td>
                             <td>{{ $product->prod_name }}</td>
                             <td>{{ $product->prod_price }}</td>
-                            <td>{{ $product->category->cate_name }}</td>
+                            <td>
+                                @if($product->category_id != 0)
+                                    {{ $product->category->cate_name }}
+                                @else
+                                @endif
+                            </td>
                             <td>
                                 <a href="{{ route('productEdit', $product->id) }}">
                                     <button type="button" class="btn btn-primary">Update</button>

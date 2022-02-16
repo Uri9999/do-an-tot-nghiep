@@ -17,6 +17,12 @@
     <link rel="stylesheet" href="{{ url('user/css/flexslider.css') }}" type="text/css" media="screen" />
     <link href="{{ url('user/css/style.css') }}" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <style>
+        .d-flex {
+            display: flex
+        }
+        
+    </style>
     @yield('css')
 </head>
 
@@ -102,16 +108,24 @@
                                 </div>
                                 <div class="col-md-3">
                                     <ul class="usermenu">
-                                        <li>
-                                            <a href="{{ route('login') }}" class="log">
-                                                Login
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ route('register') }}" class="reg">
-                                                Register
-                                            </a>
-                                        </li>
+                                        @if(Auth::check())
+                                            <li>
+                                                <a href="{{ route('login') }}" class="log">
+                                                    {{ Auth::user()->email }}
+                                                </a>
+                                            </li>
+                                        @else
+                                            <li>
+                                                <a href="{{ route('login') }}" class="log">
+                                                    Login
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ route('register') }}" class="reg">
+                                                    Register
+                                                </a>
+                                            </li>
+                                            @endif
                                     </ul>
                                 </div>
                             </div>
@@ -119,10 +133,13 @@
                         <div class="clearfix">
                         </div>
                         <div class="header_bottom">
-                            <ul class="option">
+                            <ul style="" class="option d-flex justify-content-end">
                                 <li id="search" class="search">
                                     <form>
-                                        <input class="search-submit" type="submit" value="">
+                                        <div class="d-flex flex-row-reverse">
+                                            <input type="text" style="margin-right: 10px; width: 500px;">
+                                            <input class="search-submit" type="submit" value="">
+                                        </div>
                                         <input class="search-input" placeholder="Enter your search term..."
                                             type="text" value="" name="search">
                                     </form>
@@ -263,109 +280,7 @@
                                     </li>
                                     <li>
                                         <a href="productgird.html">
-                                            men
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="productlitst.html">
-                                            women
-                                        </a>
-                                    </li>
-                                    <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                            Fashion
-                                        </a>
-                                        <div class="dropdown-menu mega-menu">
-                                            <div class="row">
-                                                <div class="col-md-6 col-sm-6">
-                                                    <ul class="mega-menu-links">
-                                                        <li>
-                                                            <a href="productgird.html">
-                                                                New Collection
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="productgird.html">
-                                                                Shirts & tops
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="productgird.html">
-                                                                Laptop & Brie
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="productgird.html">
-                                                                Dresses
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="productgird.html">
-                                                                Blazers & Jackets
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="productgird.html">
-                                                                Shoulder Bags
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="col-md-6 col-sm-6">
-                                                    <ul class="mega-menu-links">
-                                                        <li>
-                                                            <a href="productgird.html">
-                                                                New Collection
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="productgird.html">
-                                                                Shirts & tops
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="productgird.html">
-                                                                Laptop & Brie
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="productgird.html">
-                                                                Dresses
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="productgird.html">
-                                                                Blazers & Jackets
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="productgird.html">
-                                                                Shoulder Bags
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <a href="productgird.html">
                                             gift
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="productgird.html">
-                                            kids
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="productgird.html">
-                                            blog
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="productgird.html">
-                                            jewelry
                                         </a>
                                     </li>
                                     <li>

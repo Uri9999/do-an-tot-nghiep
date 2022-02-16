@@ -25,7 +25,7 @@
                 <thead>
                     <tr>
                         <th class="list-id">Id</th>
-                        <th class="list-avatar">Avatar</th>
+                        {{-- <th class="list-avatar">Avatar</th> --}}
                         <th class="list-name">Name</th>
                         <th class="list-email">Email</th>
                         <th class="list-action">Action</th>
@@ -36,15 +36,6 @@
                     @foreach ($users as $key => $user)
                         <tr>
                             <td>{{ $user->id }}</td>
-                            <td>
-                                @if (isset($user->avatar))
-                                    {{-- <img src="{{  }}" alt=""> --}}
-                                @else
-                                    <span id="profileImage">
-
-                                    </span>
-                                @endif
-                            </td>
                             <td>{{ $user->email }}</td>
                             <td>{{ $user->name }}</td>
                             <td>
