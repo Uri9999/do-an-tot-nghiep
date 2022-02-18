@@ -110,6 +110,7 @@
                                 <div class="demo">
                                     <form action="{{ route('userCheckout') }}" method="POST" class="payment-card">
                                         @csrf
+                                        <input type="hidden" name="coupon_code" value="{{ $discountCode }}">
                                         <div class="bank-card">
                                             <div class="bank-card__side bank-card__side_front">
                                                 <div class="bank-card__inner">

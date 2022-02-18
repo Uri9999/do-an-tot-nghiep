@@ -22,7 +22,7 @@ class CreateTransfersTable extends Migration
             $table->string('coupon_code')->nullable();
             $table->integer('coupon_type')->nullable();
             $table->integer('coupon_value')->nullable();
-            $table->integer('total_discount_amount')->nullable();
+            $table->integer('actual_price')->nullable();
             $table->timestamps();
         });
     }

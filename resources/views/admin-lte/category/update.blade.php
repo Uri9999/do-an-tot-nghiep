@@ -3,7 +3,7 @@
     <link rel="stylesheet" href="//cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
     {{-- <link rel="stylesheet" href="{{ url('css/admin-lte/user.css') }}"> --}}
 @endsection
-@section('content-manager')
+@section('content-manager')Create
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">

@@ -894,7 +894,15 @@ function calculatePrice() {
     totalPrice += Number($(this).val());
   });
   $('.subtotal span').text(Intl.NumberFormat('de-DE').format(totalPrice));
-  $('.grandtotal span').text(Intl.NumberFormat('de-DE').format(totalPrice));
+  $('.actual-price span').text(Intl.NumberFormat('de-DE').format(totalPrice));
+  $('input[name=subtotal]').val(totalPrice);
+  var discountValue = $('input[name=discount]').val();
+  console.log(discountValue);
+
+  if (discountValue > 0) {
+    var actualPrice = calculateActualPrice(totalPrice, discountValue);
+    $('.actual-price span').text(Intl.NumberFormat('de-DE').format(actualPrice));
+  }
 }
 
 function saveData(_x, _x2) {
@@ -937,6 +945,61 @@ function _saveData() {
   }));
   return _saveData.apply(this, arguments);
 }
+
+function searchCoupon() {
+  return _searchCoupon.apply(this, arguments);
+}
+
+function _searchCoupon() {
+  _searchCoupon = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            console.log(1);
+            _context2.next = 3;
+            return axios({
+              url: window.location.origin + '/home-user/user/cart/coupon-find/' + $('input[name=coupon_code]').val(),
+              method: 'GET',
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            }).then(function (response) {
+              console.log(response.data.data);
+              $('.discount').removeClass('d-none');
+              $('.actual-price').removeClass('d-none');
+              var discountValue = response.data.data.coupon.coupon_value;
+              var discountCode = response.data.data.coupon.coupon_code;
+              $('input[name=discount]').val(discountValue);
+              $('input[name=discount_code]').val(discountCode);
+              $('.discount span').text(Intl.NumberFormat('de-DE').format(discountValue));
+              var subPrice = $('input[name=subtotal]').val();
+              var actualPrice = calculateActualPrice(subPrice, discountValue);
+              $('.actual-price span').text(Intl.NumberFormat('de-DE').format(actualPrice));
+              $('.error-coupon').addClass('d-none');
+            })["catch"](function (error) {
+              $('.error-coupon').removeClass('d-none');
+              $('input[name=discount_code]').val("");
+              $('.discount span').text(0);
+              $('.actual-price').addClass('d-none');
+              $('.discount').addClass('d-none');
+            });
+
+          case 3:
+          case "end":
+            return _context2.stop();
+        }
+      }
+    }, _callee2);
+  }));
+  return _searchCoupon.apply(this, arguments);
+}
+
+function calculateActualPrice(price, discountValue) {
+  return price - price * discountValue / 100;
+}
+
+$('#searchData').click(searchCoupon);
 
 /***/ }),
 

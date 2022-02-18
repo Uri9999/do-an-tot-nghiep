@@ -14,7 +14,10 @@ class Transfer extends Model
         'coupon_code',
         'coupon_type',
         'coupon_value',
-        'total_discount_amount',
+        'actual_price',
+        'product_price',
+        'product_img',
+        'product_name',
     ];
 
     public function carts() {

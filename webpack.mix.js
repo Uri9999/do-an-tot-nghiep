@@ -25,4 +25,5 @@ mix.js('resources/js/app.js', 'public/js')
    .js('resources/js/cart.js', 'public/js')
    .js('resources/js/user/index.js', 'public/js/user')
    .js('resources/js/user/cart.js', 'public/js/user')
+   .js('resources/js/user/coupon.js', 'public/js/user')
    .version();

@@ -113,6 +113,11 @@ Route::group(['prefix' => 'admin-manager', 'middleware' => ['auth', 'role:admin'
     Route::get('order/detail/{id}', 'admin\OrderController@show')->name('orderDetail');
 
     Route::get('coupon', 'admin\CouponController@index')->name('couponList');
+    Route::post('coupon/store', 'admin\CouponController@store')->name('couponStore');
+    Route::get('coupon/create', 'admin\CouponController@create')->name('couponCreate');
+    Route::get('coupon/delete/{id}', 'admin\CouponController@destroy')->name('couponDelete');
+    Route::get('coupon/edit/{id}', 'admin\CouponController@edit')->name('couponEdit');
+    Route::post('coupon/update/{id}', 'admin\CouponController@update')->name('couponUpdate');
 
 });
 
@@ -124,9 +129,10 @@ Route::group(['prefix' => 'home-user'], function() {
     Route::post('/cart/remove-cart', 'user\HomeController@removeCart')->name('userRemoveCart')->middleware(['auth', 'role:user']);
     Route::get('/detail/{id}', 'user\ProductController@getDetail')->name('userGetDetail');
     Route::get('/user/cart', 'user\ProductController@getCart')->name('userGetCart');
+    Route::get('/user/cart/coupon-find/{code}', 'user\ProductController@getCoupon')->name('userGetCoupon');
     Route::post('/user/cart', 'user\ProductController@updateCart')->name('userUpdateCart');
     Route::post('/user/add-cart', 'user\ProductController@addCart')->name('userAddCart');
     Route::get('/user/delete-cart/{id}', 'user\ProductController@removeCartProduct')->name('userDeleteCart');
-    Route::get('/user/get-checkout', 'user\ProductController@getCheckout')->name('userGetCheckout');
+    Route::post('/user/get-checkout', 'user\ProductController@getCheckout')->name('userGetCheckout');
     Route::post('/user/checkout', 'user\ProductController@checkout')->name('userCheckout');
 });

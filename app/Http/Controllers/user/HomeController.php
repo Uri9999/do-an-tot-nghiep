@@ -62,7 +62,10 @@ class HomeController extends Controller
                     [
                         'user_id' => Auth::id(),
                         'product_id' => $product->id,
-                        'total_price' => 1 * $product->prod_price
+                        'total_price' => 1 * $product->prod_price,
+                        'product_price' => $product->prod_price,
+                        'product_img' => $product->prod_img,
+                        'product_name' => $product->prod_name,
                     ]
                 );
                 $cart = Cart::where('user_id', Auth::id())->get();
