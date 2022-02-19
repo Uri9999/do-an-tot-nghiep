@@ -21,7 +21,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/admin-manager', 'AdminController@test');
+// Route::get('/admin-manager', 'AdminController@test');
 
 Route::get('/logout', 'HomeController@logout')->name('userLogout');
 
@@ -92,6 +92,9 @@ Route::get('/socialite-login/facebook', 'Auth\SocialLoginController@processLogin
 
 Route::group(['prefix' => 'admin-manager', 'middleware' => ['auth', 'role:admin']], function() {
     // Route::get('/', 'admin/HomeController')->name('home');
+    // Route::get('/', 'AdminController@test')->name('adminDashboard');
+    Route::get('/', 'AdminController@dashboard')->name('adminDashboard');
+
     Route::get('users', 'admin\UserController@index')->name('users');
     Route::get('user/block/{id}', 'admin\UserController@block')->name('block');
     Route::get('user/update/{id}', 'admin\UserController@update')->name('updateUser');
@@ -118,6 +121,8 @@ Route::group(['prefix' => 'admin-manager', 'middleware' => ['auth', 'role:admin'
     Route::get('coupon/delete/{id}', 'admin\CouponController@destroy')->name('couponDelete');
     Route::get('coupon/edit/{id}', 'admin\CouponController@edit')->name('couponEdit');
     Route::post('coupon/update/{id}', 'admin\CouponController@update')->name('couponUpdate');
+    Route::get('contact', 'admin\ContactController@index')->name('contactList');
+    Route::get('contact/delete/{id}', 'admin\ContactController@destroy')->name('contactDelete');
 
 });
 
