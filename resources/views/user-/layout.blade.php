@@ -144,9 +144,10 @@
                         <div class="header_bottom">
                             <ul style="" class="option d-flex justify-content-end">
                                 <li id="search" class="search">
-                                    <form>
+                                    <form method="get" action="{{ route('searchProduct') }}">
+                                        @csrf
                                         <div class="d-flex flex-row-reverse">
-                                            <input type="text" style="margin-right: 10px; width: 500px;">
+                                            <input type="text" name="product_name" style="margin-right: 10px; width: 500px;">
                                             <input class="search-submit" type="submit" value="">
                                         </div>
                                         <input class="search-input" placeholder="Enter your search term..."

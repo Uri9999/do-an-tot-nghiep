@@ -140,6 +140,7 @@ Route::group(['prefix' => 'home-user'], function() {
     Route::get('/user/delete-cart/{id}', 'user\ProductController@removeCartProduct')->name('userDeleteCart');
     Route::get('/user/get-checkout', 'user\ProductController@getCheckout')->name('userGetCheckout');
     Route::post('/user/checkout', 'user\ProductController@checkout')->name('userCheckout');
+    Route::get('/user/search-product', 'user\ProductController@search')->name('searchProduct');
 
     Route::get('/user/transfer', 'user\TransferController@index')->name('userTransfer')->middleware(['auth', 'role:user']);
     Route::get('/user/transfer/{id}', 'user\TransferController@show')->name('userTransferDetail')->middleware(['auth', 'role:user']);

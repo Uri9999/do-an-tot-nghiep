@@ -183,4 +183,12 @@ class ProductController extends Controller
             return response()->json(['message' => $th->getMessage()], Response::HTTP_BAD_REQUEST);
         }
     }
+
+    public function search(Request $request)
+    {
+        $products = Product::with('category')
+            ->where('prod_name', 'like', '%' . $request->product_name . '%')
+            ->get();
+        return view('user-.search')->with('products', $products);
+    }
 }
