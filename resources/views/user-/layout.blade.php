@@ -111,7 +111,7 @@
                                     <ul class="usermenu">
                                         @if (Auth::check())
                                             <li class="name-user">
-                                                <a href="{{ route('login') }}" class="log">
+                                                <a href="{{ route('getHomeIndex') }}" class="log">
                                                     {{ Auth::user()->email }}
                                                 </a>
                                                 <ul class="option-cart-item user-info">

@@ -38,7 +38,7 @@ class LoginController extends Controller
     protected function authenticated(Request $request, $user)
     {
         if ($user->role->name == 'admin') {
-            return redirect()->route('users');
+            return redirect()->route('adminDashboard');
         } else {
             return redirect()->route('getHomeIndex');
         }
