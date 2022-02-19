@@ -34,7 +34,8 @@
                     <div class="col-md-2 col-sm-2">
                         <div class="logo">
                             <a href="{{ route('getHomeIndex') }}">
-                                <img src="{{ url('user/images/logo.png') }}" alt="FlatShop">
+                                {{-- <img src="{{ url('user/images/logo.png') }}" alt="FlatShop"> --}}
+                                <img src="{{ url('css/frontend-css/img_psd/logo-market.png') }}" alt="">
                             </a>
                         </div>
                     </div>
@@ -73,7 +74,7 @@
                                     </ul>
                                 </div>
                                 <div class="col-md-6">
-                                    <ul class="topmenu">
+                                    {{-- <ul class="topmenu">
                                         <li>
                                             <a href="#">
                                                 About Us
@@ -104,7 +105,7 @@
                                                 Support
                                             </a>
                                         </li>
-                                    </ul>
+                                    </ul> --}}
                                 </div>
                                 <div class="col-md-3">
                                     <ul class="usermenu">
@@ -279,7 +280,7 @@
                                         </div>
                                     </li>
                                     <li>
-                                        <a href="productgird.html">
+                                        <a href="{{ route('userCoupon') }}">
                                             gift
                                         </a>
                                     </li>
@@ -313,7 +314,8 @@
                         <div class="col-md-3">
                             <div class="footer-logo">
                                 <a href="{{ route('getHomeIndex') }}">
-                                    <img src="{{ url('user/images/logo.png') }}" alt="">
+                                    {{-- <img src="{{ url('user/images/logo.png') }}" alt=""> --}}
+                                    <img src="{{ url('css/frontend-css/img_psd/logo-market.png') }}" alt="">
                                 </a>
                             </div>
                         </div>
@@ -366,18 +368,18 @@
                         </div>
                         <div class="col-md-3">
                             <h4 class="title">
-                                Get Our
+                                Contact
                                 <strong>
-                                    Newsletter
+                                    Us
                                 </strong>
                             </h4>
                             <p>
                                 Lorem ipsum dolor ipsum dolor.
                             </p>
-                            <form class="newsletter">
+                            {{-- <form class="newsletter">
                                 <input type="text" name="" placeholder="Type your email....">
                                 <input type="submit" value="SignUp" class="button">
-                            </form>
+                            </form> --}}
                         </div>
                     </div>
                 </div>
@@ -387,9 +389,9 @@
                     <div class="row">
                         <div class="col-md-6">
                             <p>
-                                Copyright © 2012. Designed by
+                                Copyright © 2022. Designed by
                                 <a href="#">
-                                    Michael Lee
+                                    HAU
                                 </a>
                                 . All rights reseved
                             </p>

@@ -135,4 +135,8 @@ Route::group(['prefix' => 'home-user'], function() {
     Route::get('/user/delete-cart/{id}', 'user\ProductController@removeCartProduct')->name('userDeleteCart');
     Route::post('/user/get-checkout', 'user\ProductController@getCheckout')->name('userGetCheckout');
     Route::post('/user/checkout', 'user\ProductController@checkout')->name('userCheckout');
+
+    Route::get('/user/transfer', 'user\TransferController@index')->name('userTransfer');
+    Route::get('/user/transfer/{id}', 'user\TransferController@show')->name('userTransferDetail');
+    Route::get('/user/coupon', 'user\CouponController@index')->name('userCoupon');
 });

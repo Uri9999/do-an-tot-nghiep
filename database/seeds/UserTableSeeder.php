@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\User;
+use Illuminate\Support\Facades\Hash;
 
 class UserTableSeeder extends Seeder
 {
@@ -12,7 +13,7 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        User::truncate();
         User::create([
             'name' => 'nhat',
             'email' => 'nhat@gmail.com',
@@ -31,5 +32,14 @@ class UserTableSeeder extends Seeder
             'password' => Hash::make('123123'),
             'role_id' => 2
         ]);
+        $faker = Faker\Factory::create();
+        for ($i = 0; $i < 100; $i++) {
+            User::create([
+                'name' => $faker->name,
+                'email' => $faker->email,
+                'password' => Hash::make('123123'),
+                'role_id' => 2
+            ]);
+        }
     }
 }

@@ -52,7 +52,7 @@
             </div>
             <div class="clearfix">
             </div>
-            <div class="price-filter leftbar">
+            {{-- <div class="price-filter leftbar">
                 <h3 class="title">
                     Price
                 </h3>
@@ -70,7 +70,7 @@
                     </label>
                     <input type="submit" value="Go">
                 </form>
-            </div>
+            </div> --}}
             <div class="clearfix">
             </div>
             <div class="special-deal leftbar">

@@ -14,24 +14,24 @@ class CateTableSeeder extends Seeder
     {
         //
         Category::create([
-            'cate_name' => 'Áo Khoác',
-            'cate_slug' => str_slug('Áo Khoác')
+            'cate_name' => 'Laptop',
+            'cate_slug' => str_slug('Computer')
         ]);
         Category::create([
-            'cate_name' => 'Áo Thun',
-            'cate_slug' => str_slug('Áo Khoác')
+            'cate_name' => 'Phone',
+            'cate_slug' => str_slug('Phone')
         ]);
         Category::create([
-            'cate_name' => 'Áo Sơ Mi',
-            'cate_slug' => str_slug('Áo Khoác')
+            'cate_name' => 'Mouse',
+            'cate_slug' => str_slug('Laptop')
         ]);
         Category::create([
-            'cate_name' => 'Áo Bà Ba',
-            'cate_slug' => str_slug('Áo Khoác')
+            'cate_name' => 'Camera',
+            'cate_slug' => str_slug('Camera')
         ]);
         Category::create([
-            'cate_name' => 'Áo Tứ Thân',
-            'cate_slug' => str_slug('Áo Khoác')
+            'cate_name' => 'Keyboard',
+            'cate_slug' => str_slug('Keyboard')
         ]);
 
 

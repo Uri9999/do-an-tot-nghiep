@@ -144,6 +144,12 @@ class ProductController extends Controller
                 'coupon_value' => isset($coupon) ? $coupon->coupon_value : null,
                 'actual_price' => $actualAmount ?? $amount 
             ]);
+            if (isset($coupon)) {
+                Coupon::where('id', $coupon->id)
+                    ->update([
+                        'quantity' => $coupon->quantity-1
+                    ]);
+            }
 
             Cart::where('user_id', Auth::id())
                 ->where('status', Cart::UN_PAID)
@@ -152,8 +158,7 @@ class ProductController extends Controller
                     'transfer_id' => $transfer->id
                 ]);
 
-            dd('success');
-            return view('user-.getHomeIndex');
+            return redirect()->route('userTransfer');
         } catch (\Throwable $th) {
             Session::flash('message', $th->getMessage());
             return redirect()->back();
