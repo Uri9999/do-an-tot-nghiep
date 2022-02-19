@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="images/favicon.png">
+    <link rel="shortcut icon" href="{{ url('user/images/favicon.png') }}">
     <title>
         Welcome to FlatShop
     </title>
@@ -17,11 +17,11 @@
     <link rel="stylesheet" href="{{ url('user/css/flexslider.css') }}" type="text/css" media="screen" />
     <link href="{{ url('user/css/style.css') }}" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <link href="{{ url('css/user/index.css') }}" rel="stylesheet">
     <style>
         .d-flex {
-            display: flex
+            display: flex;
         }
-        
     </style>
     @yield('css')
 </head>
@@ -44,7 +44,7 @@
                             <div class="row">
                                 <div class="col-md-3">
                                     <ul class="option_nav">
-                                        <li class="dorpdown">
+                                        {{-- <li class="dorpdown">
                                             <a href="#">
                                                 Eng
                                             </a>
@@ -70,7 +70,7 @@
                                                     </a>
                                                 </li>
                                             </ul>
-                                        </li>
+                                        </li> --}}
                                     </ul>
                                 </div>
                                 <div class="col-md-6">
@@ -109,11 +109,19 @@
                                 </div>
                                 <div class="col-md-3">
                                     <ul class="usermenu">
-                                        @if(Auth::check())
-                                            <li>
+                                        @if (Auth::check())
+                                            <li class="name-user">
                                                 <a href="{{ route('login') }}" class="log">
                                                     {{ Auth::user()->email }}
                                                 </a>
+                                                <ul class="option-cart-item user-info">
+                                                        <li>
+                                                            <a href="{{ route('userTransfer') }}">Order history</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="{{ route('userLogout') }}">Logout</a>
+                                                        </li>
+                                                </ul>
                                             </li>
                                         @else
                                             <li>
@@ -126,7 +134,7 @@
                                                     Register
                                                 </a>
                                             </li>
-                                            @endif
+                                        @endif
                                     </ul>
                                 </div>
                             </div>
@@ -157,7 +165,8 @@
                                                 <div class="cart-item">
                                                     <div class="image">
                                                         <a :href="'home-user/detail/' + item.product.id">
-                                                            <img :src="'profile_images/' + item.product.prod_img" alt="">
+                                                            <img :src="'profile_images/' + item.product.prod_img"
+                                                                alt="">
                                                         </a>
                                                     </div>
                                                     <div class="item-description">
@@ -178,8 +187,7 @@
                                                         <p class="price" x-text="item.total_price">
                                                             $30.00
                                                         </p>
-                                                        <a href="#" 
-                                                            @click.prevent="removeCart(item.id)"
+                                                        <a href="#" @click.prevent="removeCart(item.id)"
                                                             class="remove">
                                                             <img src="{{ url('user/images/remove.png') }}"
                                                                 alt="remove">
@@ -220,11 +228,11 @@
                             </div>
                             <div class="navbar-collapse collapse">
                                 <ul class="nav navbar-nav">
-                                    <li class="active dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <li class="layout-menu layout-home">
+                                        <a href="{{ route('getHomeIndex') }}">
                                             Home
                                         </a>
-                                        <div class="dropdown-menu">
+                                        {{-- <div class="dropdown-menu">
                                             <ul class="mega-menu-links">
                                                 <li>
                                                     <a href="index.html">
@@ -277,15 +285,15 @@
                                                     </a>
                                                 </li>
                                             </ul>
-                                        </div>
+                                        </div> --}}
                                     </li>
-                                    <li>
+                                    <li class="layout-menu layout-coupon">
                                         <a href="{{ route('userCoupon') }}">
                                             gift
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="contact.html">
+                                    <li class="layout-menu layout-contact">
+                                        <a href="{{ route('userContact') }}">
                                             contact us
                                         </a>
                                     </li>
@@ -327,13 +335,13 @@
                                 </strong>
                             </h4>
                             <p>
-                                No. 08, Nguyen Trai, Hanoi , Vietnam
+                                Tran Phu, Nguyen Trai, Hanoi , Vietnam
                             </p>
                             <p>
                                 Call Us : (084) 1900 1008
                             </p>
                             <p>
-                                Email : michael@leebros.us
+                                Email : hau@hanoi.us
                             </p>
                         </div>
                         <div class="col-md-3 col-sm-6">

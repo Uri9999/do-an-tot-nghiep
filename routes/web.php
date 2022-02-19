@@ -23,7 +23,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/admin-manager', 'AdminController@test');
 
-Route::get('/logout', 'HomeController@logout');
+Route::get('/logout', 'HomeController@logout')->name('userLogout');
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], function(){
     Route::get('/', 'AdminController@index')->name('dashboard');
@@ -133,10 +133,12 @@ Route::group(['prefix' => 'home-user'], function() {
     Route::post('/user/cart', 'user\ProductController@updateCart')->name('userUpdateCart');
     Route::post('/user/add-cart', 'user\ProductController@addCart')->name('userAddCart');
     Route::get('/user/delete-cart/{id}', 'user\ProductController@removeCartProduct')->name('userDeleteCart');
-    Route::post('/user/get-checkout', 'user\ProductController@getCheckout')->name('userGetCheckout');
+    Route::get('/user/get-checkout', 'user\ProductController@getCheckout')->name('userGetCheckout');
     Route::post('/user/checkout', 'user\ProductController@checkout')->name('userCheckout');
 
-    Route::get('/user/transfer', 'user\TransferController@index')->name('userTransfer');
-    Route::get('/user/transfer/{id}', 'user\TransferController@show')->name('userTransferDetail');
+    Route::get('/user/transfer', 'user\TransferController@index')->name('userTransfer')->middleware(['auth', 'role:user']);
+    Route::get('/user/transfer/{id}', 'user\TransferController@show')->name('userTransferDetail')->middleware(['auth', 'role:user']);
     Route::get('/user/coupon', 'user\CouponController@index')->name('userCoupon');
 });
+Route::get('/user/contact', 'user\ContactController@index')->name('userContact');
+Route::post('/user/contact', 'user\ContactController@store')->name('userContactStore');

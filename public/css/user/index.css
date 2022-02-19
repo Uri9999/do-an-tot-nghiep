@@ -24,3 +24,30 @@
   font-weight: 500;
 }
 
+.user-info {
+  display: block;
+  width: 190px;
+  top: 30px !important;
+}
+
+.user-info li {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.user-info li a {
+  color: black !important;
+}
+
+.user-info li a:hover {
+  color: #ff1e2c !important;
+}
+
+.user-info {
+  display: none;
+}
+
+.name-user:hover > ul {
+  display: block;
+}
+

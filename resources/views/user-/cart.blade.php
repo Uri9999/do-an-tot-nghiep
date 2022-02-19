@@ -59,14 +59,14 @@
                                     <td>
                                         <div class="shop-details">
                                             <div class="productname">
-                                                {{ $item->product->prod_name }}
+                                                Product Name: {{ $item->product->prod_name }}
                                             </div>
-                                            <p>
+                                            {{-- <p>
                                                 <img alt="" src="{{ url('user/images/star.png') }}">
                                                 <a class="review_num" href="#">
                                                     02 Review(s)
                                                 </a>
-                                            </p>
+                                            </p> --}}
                                             {{-- <div class="color-choser">
                                                 <span class="text">
                                                     Product Color :
@@ -94,7 +94,8 @@
                                     </td>
                                     <td>
                                         <h5>
-                                            {{ $item->product->prod_price }}
+                                            {{-- {{ $item->product->prod_price }} --}}
+                                            {{ number_format($item->product->prod_price, 0, ',', '.') }} $
                                         </h5>
                                     </td>
                                     <input type="hidden" name="price" value="{{ $item->product->prod_price }}">
@@ -112,7 +113,8 @@
                                     <td class="subtotal-cart">
                                         <h5>
                                             <strong class="red">
-                                                {{ $item->product->prod_price * $item->quantity}}
+                                                {{-- {{ $item->product->prod_price * $item->quantity }} --}}
+                                                {{ number_format($item->product->prod_price * $item->quantity, 0, ',', '.') }} $
                                             </strong>
                                         </h5>
                                     </td>
@@ -167,7 +169,7 @@
                     </div>
                     <div class="col-md-4 col-sm-6">
                         <div class="shippingbox">
-                            <form action="{{ route('userGetCheckout') }}" method="post">
+                            <form action="{{ route('userGetCheckout') }}" method="get">
                                 @csrf
                                 <div class="subtotal">
                                     <h5>

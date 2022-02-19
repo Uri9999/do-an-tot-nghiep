@@ -17,8 +17,8 @@ function calculatePrice() {
     $('input[name=subPrice]').each(function() {
         totalPrice += Number($(this).val())
     });
-    $('.subtotal span').text(Intl.NumberFormat('de-DE').format(totalPrice));
-    $('.actual-price span').text(Intl.NumberFormat('de-DE').format(totalPrice));
+    $('.subtotal span').text(Intl.NumberFormat('de-DE').format(totalPrice) + ' $');
+    $('.actual-price span').text(Intl.NumberFormat('de-DE').format(totalPrice) + ' $');
     $('input[name=subtotal]').val(totalPrice);
 
     let discountValue = $('input[name=discount]').val();
@@ -46,7 +46,6 @@ async function saveData(cartId, quantity) {
 }
 
 async function searchCoupon() {
-    console.log(1);
     await axios({
         url: window.location.origin + '/home-user/user/cart/coupon-find/' + $('input[name=coupon_code]').val(),
         method: 'GET',
@@ -59,10 +58,10 @@ async function searchCoupon() {
         let discountCode = response.data.data.coupon.coupon_code;
         $('input[name=discount]').val(discountValue)
         $('input[name=discount_code]').val(discountCode)
-        $('.discount span').text(Intl.NumberFormat('de-DE').format(discountValue));
+        $('.discount span').text(Intl.NumberFormat('de-DE').format(discountValue) + ' %');
         let subPrice = $('input[name=subtotal]').val();
         let actualPrice = calculateActualPrice(subPrice, discountValue);
-        $('.actual-price span').text(Intl.NumberFormat('de-DE').format(actualPrice));
+        $('.actual-price span').text(Intl.NumberFormat('de-DE').format(actualPrice) + ' $');
         $('.error-coupon').addClass('d-none');
 
     }).catch((error) => {

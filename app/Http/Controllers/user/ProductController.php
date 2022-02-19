@@ -103,7 +103,6 @@ class ProductController extends Controller
     public function checkout(Request $request)
     {
         try {
-            // dd($request->all());
             $stripe = new \Stripe\StripeClient(
                 env('PRIVATE_KEY_STRIPE')
             );

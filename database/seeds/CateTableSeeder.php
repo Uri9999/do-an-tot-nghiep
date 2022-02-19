@@ -12,7 +12,7 @@ class CateTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Category::truncate();
         Category::create([
             'cate_name' => 'Laptop',
             'cate_slug' => str_slug('Computer')

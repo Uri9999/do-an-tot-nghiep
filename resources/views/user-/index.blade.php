@@ -1,6 +1,5 @@
 @extends('user-.layout')
 @section('css')
-<link href="{{ url('css/user/index.css') }}" rel="stylesheet">
 @endsection
 @section('content')
     <div class="row" x-show="screen == 1">
@@ -44,7 +43,7 @@
                         <div class="product-info">
                             <p x-text="specialProduct.prod_name">
                             </p>
-                            <h5 class="price" x-text="specialProduct.prod_price">
+                            <h5 class="price" x-text="specialProduct.prod_price + ' $'">
                             </h5>
                         </div>
                     </div>
@@ -92,7 +91,7 @@
                         <div class="product-info">
                             <p x-text="hotProduct.prod_name">
                             </p>
-                            <h5 class="price" x-text="hotProduct.prod_price">
+                            <h5 class="price" x-text="hotProduct.prod_price + ' $'">
                             </h5>
                         </div>
                     </div>
@@ -110,14 +109,14 @@
                     <ul class="slides">
                         <li>
                             <a href="#">
-                                <img src="{{ url('user/images/banner-01.jpg') }}" alt="" />
+                                <img style="width: 100%;" src="{{ url('images/banner003.png') }}" alt="" />
                             </a>
                         </li>
-                        <li>
+                        {{-- <li>
                             <a href="#">
                                 <img src="{{ url('user/images/banner-02.jpg') }}" alt="" />
                             </a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </div>
             </div>
@@ -187,7 +186,7 @@
                                 <div class="productname" x-text="product.prod_name">
 
                                 </div>
-                                <h4 class="price" x-text="product.prod_price">
+                                <h4 class="price" x-text="product.prod_price + ' $'">
                                     $451.00
                                 </h4>
                                 <div class="button_group">
@@ -238,7 +237,7 @@
                                     </p>
                                     <div class="list_bottom">
                                         <div class="price">
-                                            <span class="new_price" x-text="product.prod_price">
+                                            <span class="new_price" x-text="product.prod_price + ' $'">
                                                 450.00
                                             </span>
                                             <sup>
@@ -327,4 +326,8 @@
 @endsection
 @section('js')
     <script src="{{ url('js/user/index.js') }}"></script>
+    <script>
+        $('.layout-menu').removeClass('active');
+        $('.layout-home').addClass('active');
+    </script>
 @endsection

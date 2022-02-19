@@ -23,3 +23,27 @@
     color:#f7544a !important;
     font-weight: 500;
 }
+
+.user-info {
+    display: block;
+    width: 190px;
+    top: 30px !important;
+    li {
+        a {
+            color: black !important;
+        }
+        margin-top: 5px;
+        margin-bottom: 5px;
+        a:hover {
+            color: #ff1e2c !important;
+        }
+    }
+}
+
+.user-info {
+    display: none;
+}
+.name-user:hover > ul {
+    display: block;
+}
+

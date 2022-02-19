@@ -87,7 +87,7 @@
                         <div class="price">
                             Price :
                             <span class="new_price">
-                                {{ $product->prod_price }}
+                                {{ number_format($product->prod_price, 0, ',', '.') }}
                                 <sup>
                                     $
                                 </sup>
@@ -130,11 +130,11 @@
                                 DESCRIPTION
                             </a>
                         </li>
-                        <li>
+                        {{-- <li>
                             <a href="#Reviews">
                                 REVIEW
                             </a>
-                        </li>
+                        </li> --}}
                         {{-- <li>
                             <a href="#tags">
                                 PRODUCT TAGS
@@ -385,7 +385,8 @@
                                 {{ $product->prod_name }}
                             </p>
                             <h5 class="price">
-                                {{ $product->prod_price }}
+                                {{-- {{ $product->prod_price }} --}}
+                                {{ number_format($product->prod_price, 0, ',', '.') }} $
                             </h5>
                         </div>
                     </div>
@@ -393,7 +394,7 @@
             </div>
             <div class="clearfix">
             </div>
-            <div class="fbl-box leftbar">
+            {{-- <div class="fbl-box leftbar">
                 <h3 class="title">
                     Facebook
                 </h3>
@@ -447,7 +448,7 @@
                         Facebook social plugin
                     </a>
                 </div>
-            </div>
+            </div> --}}
             <div class="clearfix">
             </div>
         </div>

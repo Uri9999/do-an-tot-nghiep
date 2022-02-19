@@ -893,11 +893,10 @@ function calculatePrice() {
   $('input[name=subPrice]').each(function () {
     totalPrice += Number($(this).val());
   });
-  $('.subtotal span').text(Intl.NumberFormat('de-DE').format(totalPrice));
-  $('.actual-price span').text(Intl.NumberFormat('de-DE').format(totalPrice));
+  $('.subtotal span').text(Intl.NumberFormat('de-DE').format(totalPrice) + ' $');
+  $('.actual-price span').text(Intl.NumberFormat('de-DE').format(totalPrice) + ' $');
   $('input[name=subtotal]').val(totalPrice);
   var discountValue = $('input[name=discount]').val();
-  console.log(discountValue);
 
   if (discountValue > 0) {
     var actualPrice = calculateActualPrice(totalPrice, discountValue);
@@ -956,8 +955,7 @@ function _searchCoupon() {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
-            console.log(1);
-            _context2.next = 3;
+            _context2.next = 2;
             return axios({
               url: window.location.origin + '/home-user/user/cart/coupon-find/' + $('input[name=coupon_code]').val(),
               method: 'GET',
@@ -972,10 +970,10 @@ function _searchCoupon() {
               var discountCode = response.data.data.coupon.coupon_code;
               $('input[name=discount]').val(discountValue);
               $('input[name=discount_code]').val(discountCode);
-              $('.discount span').text(Intl.NumberFormat('de-DE').format(discountValue));
+              $('.discount span').text(Intl.NumberFormat('de-DE').format(discountValue) + ' %');
               var subPrice = $('input[name=subtotal]').val();
               var actualPrice = calculateActualPrice(subPrice, discountValue);
-              $('.actual-price span').text(Intl.NumberFormat('de-DE').format(actualPrice));
+              $('.actual-price span').text(Intl.NumberFormat('de-DE').format(actualPrice) + ' $');
               $('.error-coupon').addClass('d-none');
             })["catch"](function (error) {
               $('.error-coupon').removeClass('d-none');
@@ -985,7 +983,7 @@ function _searchCoupon() {
               $('.discount').addClass('d-none');
             });
 
-          case 3:
+          case 2:
           case "end":
             return _context2.stop();
         }

@@ -1,6 +1,5 @@
 @extends('user-.layout')
 @section('css')
-    {{-- <link href="{{ url('css/user/index.css') }}" rel="stylesheet"> --}}
     <style>
         table {
             font-size: 16px;
@@ -67,4 +66,10 @@
         <div class="clearfix">
         </div>
     </div>
+@endsection
+@section('js')
+<script>
+    $('.layout-menu').removeClass('active');
+    $('.layout-coupon').addClass('active');
+</script>
 @endsection

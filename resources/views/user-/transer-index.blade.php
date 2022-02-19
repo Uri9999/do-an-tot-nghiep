@@ -37,14 +37,20 @@
                         @foreach ($transfers as $key => $transfer)
                             <tr>
                                 <th scope="row">{{ $key + 1 }}</th>
-                                <td>{{ $transfer->total_price }} $</td>
+                                <td>
+                                    {{-- {{ $transfer->total_price }} $ --}}
+                                    {{ number_format($transfer->total_price, 0, ',', '.') }} $
+                                </td>
                                 <td>{{ $transfer->coupon_code }}</td>
                                 @if (isset($transfer->coupon_value))
                                     <td>{{ $transfer->coupon_value }} %</td>
                                 @else
                                     <td></td>
                                 @endif
-                                <td>{{ $transfer->actual_price }} $</td>
+                                <td>
+                                    {{-- {{ $transfer->actual_price }} $ --}}
+                                    {{ number_format($transfer->actual_price, 0, ',', '.') }} $
+                                </td>
                                 <td>{{ Carbon\Carbon::parse($transfer->created_at)->format('Y-m-d') }}</td>
                                 <td>
                                     <a href="{{ route('userTransferDetail', $transfer->id) }}">
