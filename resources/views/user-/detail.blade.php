@@ -13,7 +13,7 @@
                             src="{{ url('profile_images/') . '/' . $product->prod_img }}"
                             data-zoom-image="images/products/Large/products-01.jpg" alt="">
                     </div>
-                    <div class="thum-image">
+                    <div class="thum-image" style="opacity: 0">
                         <ul id="gallery_01" class="prev-thum">
                             <li>
                                 <a href="#" data-image="images/products/medium/products-03.jpg"
