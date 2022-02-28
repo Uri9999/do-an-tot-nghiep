@@ -41,7 +41,7 @@
                         </a>
                         <div class="step-description">
                             <div class="row">
-                                <div>Total price: </div>
+                                <div>Total price: {{ $amount }}$</div>
                                 {{-- <div class="col-md-6 col-sm-6">
                                     <div class="new-customer">
                                         <h5>

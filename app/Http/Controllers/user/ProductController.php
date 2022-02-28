@@ -95,9 +95,22 @@ class ProductController extends Controller
     public function getCheckout(Request $request)
     {
         $discountCode = $request->discount_code;
+        $amount = Cart::where('user_id', Auth::id())
+            ->where('status', Cart::UN_PAID)
+            ->sum('total_price');
+        if (isset($request->discount_code)) {
+            $coupon = Coupon::whereDate('expired_date', '>=', Carbon::now())
+                ->where('quantity', '>', 0)
+                ->where('coupon_code', $request->discount_code)
+                ->first();
+            if (isset($coupon)) {
+                $amount = $amount - ($amount * $coupon->coupon_value) / 100;
+            }
+        }
         $specialProducts = Product::all()->random(3);
         return view('user-.checkout')->with('specialProducts', $specialProducts)
-            ->with('discountCode', $discountCode);
+            ->with('discountCode', $discountCode)
+            ->with('amount', $amount);
     }
 
     public function checkout(Request $request)

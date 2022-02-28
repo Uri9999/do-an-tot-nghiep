@@ -163,7 +163,7 @@
                                 <div class="clearfix">
                                 </div>
                                 <button style="margin-top: 20px;" id="searchData">
-                                    Get A Qoute
+                                    Check discount code
                                 </button>
                         </div>
                     </div>
