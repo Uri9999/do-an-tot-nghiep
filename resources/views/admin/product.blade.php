@@ -40,7 +40,12 @@
 											<td>
 												<img width="200px" src="{{ url('profile_images').'/'. $product->prod_img}}" class="thumbnail">
 											</td>
-											<td>{{ $product->category->cate_name}}</td>
+											<td>
+												@if($product->category)
+													{{ $product->category->cate_name}}	
+												@else
+												@endif
+											</td>
 											<td>
 												<a href="{{ route('getEditProd' ,$product->id) }}" class="btn btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i> Sửa</a>
 												<a href="{{ route('deleteProd' ,$product->id) }}" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Xóa</a>

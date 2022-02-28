@@ -99,7 +99,11 @@
                                     </td>
                                     <td>
                                         <strong class="red" style="font-size: 16px;">
-                                            {{ $product->category->cate_name }}
+                                            @if ($product->category)
+                                                {{ $product->category->cate_name }}
+                                            @else
+                                            
+                                            @endif
                                         </strong>
                                     </td>
                                     <td class="subtotal-cart">
