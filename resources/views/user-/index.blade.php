@@ -175,7 +175,7 @@
                         <div class="col-md-4 col-sm-6">
                             <div class="products">
                                 <div class="offer" x-show="product.featured == 1">
-                                    New
+                                    Special
                                 </div>
                                 <div class="thumbnail">
                                     <a :href="'home-user/detail/' + product.id">
@@ -213,7 +213,7 @@
                         <template x-for="(product, productIndex) in products">
                             <li class="products">
                                 <div class="offer" x-show="product.featured == 1">
-                                    New
+                                    Special
                                 </div>
                                 <div class="thumbnail">
                                     <a :href="'home-user/detail/' + product.id">
@@ -223,13 +223,13 @@
                                 </div>
                                 <div class="product-list-description">
                                     <div class="productname" x-text="product.prod_name"></div>
-                                    <p>
+                                    {{-- <p>
                                         <img src="{{ url('user/images/star.png') }}" alt="">
                                         <a href="#" class="review_num">
                                             02 Review(s)
                                         </a>
-                                    </p>
-                                    <p>
+                                    </p> --}}
+                                    <p x-text="product.prod_description">
                                         Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc.
                                         Vestibulum ante ipsum primis in faucibus orci luctus et ultri ces posuere cubilia curae.
                                         Proin lectus ipsum, gravida etds mattis vulputate, tristique ut lectus. Sed et lorem
@@ -240,7 +240,7 @@
                                             <span class="new_price" x-text="product.prod_price + ' $'">
                                                 450.00
                                             </span>
-                                            <sup>
+                                            {{-- <sup>
                                                 $
                                             </sup>
                                             <span class="old_price">
@@ -248,7 +248,7 @@
                                                 <sup>
                                                     $
                                                 </sup>
-                                            </span>
+                                            </span> --}}
                                         </div>
                                         <div class="button_group">
                                             <button class="button" @click="addCart(product.id)">

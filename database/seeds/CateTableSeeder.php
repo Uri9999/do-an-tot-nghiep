@@ -15,7 +15,7 @@ class CateTableSeeder extends Seeder
         Category::truncate();
         Category::create([
             'cate_name' => 'Laptop',
-            'cate_slug' => str_slug('Computer')
+            'cate_slug' => str_slug('Laptop')
         ]);
         Category::create([
             'cate_name' => 'Phone',
@@ -23,7 +23,7 @@ class CateTableSeeder extends Seeder
         ]);
         Category::create([
             'cate_name' => 'Mouse',
-            'cate_slug' => str_slug('Laptop')
+            'cate_slug' => str_slug('Mouse')
         ]);
         Category::create([
             'cate_name' => 'Camera',

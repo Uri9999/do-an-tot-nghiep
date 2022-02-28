@@ -77,11 +77,11 @@
                         </p>
                         <p>
                             {{ $product->prod_description }}
-                            Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc.
+                            {{-- Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc.
                             Vestibulum
                             ante ipsum primis in faucibus orci luctus et ultrie ces posuere cubilia curae. Proin lectus
                             ipsum,
-                            gravida etds mattis vulps utate, tristique ut lectus. Sed et lorem nunc...
+                            gravida etds mattis vulps utate, tristique ut lectus. Sed et lorem nunc... --}}
                         </p>
                         <hr class="border">
                         <div class="price">
@@ -144,7 +144,7 @@
                 </div>
                 <div class="tab-content-wrap">
                     <div class="tab-content" id="Descraption">
-                        <p>
+                        {{-- <p>
                             Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc.
                             Vestibulum ante ipsum primis in faucibus orci luctus et ultri ces posuere cubilia curae Aenean
                             eleifend laoreet congue. Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus.
@@ -154,14 +154,14 @@
                             ultri ces posuere cubilia curae Aenean eleifend laoreet congue. Proin lectus ipsum, gravida et
                             mattis vulputate, tristique ut lectus. Sed et lorem nunc. Vestibulum ante ipsum primis in
                             faucibus orci luctus et ultri ces posuere cubilia curae...
-                        </p>
-                        <p>
-                            Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc.
+                        </p> --}}
+                        <p> {{ $product->prod_description }}
+                            {{-- Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc.
                             Vestibulum ante ipsum primis in faucibus orci luctus et ultri ces posuere cubilia curae Aenean
                             eleifend laoreet congue. Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus.
                             Sed et lorem nunc. Vestibu um ante ipsum primis in faucibus orci luctus et ultri ces posuere
                             cubilia curae Aenean eleifend laoreet congue. Proin lectus ipsum, gravida et mattis vulputate,
-                            tristique ut lectus. Sed et lorem nunc...
+                            tristique ut lectus. Sed et lorem nunc... --}}
                         </p>
                     </div>
                     <div class="tab-content" id="Reviews">
