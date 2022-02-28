@@ -32,7 +32,7 @@
                         <th class="list-name">Total Price</th>
                         <th class="list-name">Coupon Code</th>
                         <th class="list-name">Total Discount Amount</th>
-                        <th class="list-name">Actual Amount</th>
+                        <th class="list-name">Actual Price</th>
                         <th class="list-name">Order Date</th>
                         <th class="list-name">Action</th>
                     </tr>
@@ -42,15 +42,16 @@
                         <tr>
                             <td>{{ $transfer->id }}</td>
                             <td>{{ $transfer->user->name }}</td>
-                            <td>{{ $transfer->total_price }}</td>
+                            <td>{{ number_format($transfer->total_price, 0, ',', '.') }} $</td>
                             <td>{{ $transfer->coupon_code }}</td>
-                            <td>{{ $transfer->total_discount_amount }}</td>
+                            <td>{{ number_format($transfer->total_price - $transfer->actual_price, 0, ',', '.') }} $</td>
                             <td>
-                                @if ($transfer->total_price - $transfer->total_discount_amount > 0)
+                                {{ number_format($transfer->actual_price, 0, ',', '.') }} $
+                                {{-- @if ($transfer->total_price - $transfer->total_discount_amount > 0)
                                     {{ $transfer->total_price - $transfer->total_discount_amount }}
                                 @else
                                     0
-                                @endif
+                                @endif --}}
                             </td>
                             <td>{{ Carbon\Carbon::parse($transfer->created_at)->format('Y-m-d') }}</td>
                             <td>

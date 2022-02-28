@@ -52,12 +52,12 @@
                                             <div class="productname">
                                                 {{ $item->product_name }}
                                             </div>
-                                            <p>
+                                            {{-- <p>
                                                 <img alt="" src="{{ url('user/images/star.png') }}">
                                                 <a class="review_num" href="#">
                                                     02 Review(s)
                                                 </a>
-                                            </p>
+                                            </p> --}}
                                             <p>
                                                 Product Code :
                                                 <strong class="pcode">
